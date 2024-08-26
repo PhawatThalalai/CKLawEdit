@@ -17,93 +17,81 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">เพิ่มข้อมูล</h5>
-
                 </div>
                 <div class="modal-body">
                     <form id='confirm_track'>
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-12 col-md-6">
                                 <div class="mb-3 input-bx">
                                     <span>เลขที่สัญญา</span>
-                                    <input type="text"class="form-control" name="CON_NO" id="CON_NO" required
+                                    <input type="text" class="form-control" name="CON_NO" id="CON_NO" required
                                         placeholder=" " />
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>สถานะ</span>
                                     <select class="form-select addOPR" id="levels" name="levels" required>
-                                        {{-- <option value="ชั้นศาล">ชั้นศาล</option> --}}
                                         <option value="ชั้นบังคับคดี">ชั้นบังคับคดี</option>
-
                                     </select>
-
-
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>ศาล</span>
-                                    <input type="text"class="form-control" name="tribunal" id="tribunal" required
+                                    <input type="text" class="form-control" name="tribunal" id="tribunal" required
                                         placeholder=" " />
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>เลขที่คดีดำ</span>
-                                    <input type="text"class="form-control" name="black_no" id="black_no" required
+                                    <input type="text" class="form-control" name="black_no" id="black_no" required
                                         placeholder=" " />
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>เลขที่คดีแดง</span>
-                                    <input type="text"class="form-control" name="red_no" id="red_no" required
+                                    <input type="text" class="form-control" name="red_no" id="red_no" required
                                         placeholder=" " />
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>สำนักงานบังคับคดี</span>
-                                    <input type="text"class="form-control" name="exe_office" id="exe_office" required
-                                        placeholder=" " />
+                                    <input type="text" class="form-control" name="exe_office" id="exe_office"
+                                        required placeholder=" " />
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-
+                            <div class="col-12 col-md-6">
                                 <div class="mb-3 input-bx">
                                     <span>ประเภทคดี</span>
                                     <select class="form-select addOPR" id="case_type" name="case_type" required>
                                         <option value="เช่าซื้อ">เช่าซื้อ</option>
                                         <option value="ค่าขาดราคา">ค่าขาดราคา</option>
                                         <option value="กู้ยืม">กู้ยืม</option>
-
                                     </select>
-
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>โจทย์</span>
-                                    <input type="text"class="form-control" name="plaintiff" id="plaintiff" required
+                                    <input type="text" class="form-control" name="plaintiff" id="plaintiff" required
                                         placeholder=" " />
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>จำเลยที่ 1</span>
-                                    <input type="text"class="form-control" name="defendant1" id="defendant1" required
-                                        placeholder=" " />
+                                    <input type="text" class="form-control" name="defendant1" id="defendant1"
+                                        required placeholder=" " />
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>จำเลยที่ 2</span>
-                                    <input type="text"class="form-control" name="defendant2" id="defendant2" required
-                                        placeholder=" " />
+                                    <input type="text" class="form-control" name="defendant2" id="defendant2"
+                                        required placeholder=" " />
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>จำเลยที่ 3</span>
-                                    <input type="text"class="form-control" name="defendant3" id="defendant3" required
-                                        placeholder=" " />
+                                    <input type="text" class="form-control" name="defendant3" id="defendant3"
+                                        required placeholder=" " />
                                 </div>
-
                             </div>
                         </div>
-
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                                 id="closeAddBtn">ปิด</button>
                             <button type="button" class="btn btn-primary" id="submitAddBtn">บันทึก</button>
                         </div>
-
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
@@ -114,112 +102,88 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">เพิ่มข้อมูล</h5>
-
                 </div>
                 <div class="modal-body">
                     <form id='confirm_track'>
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-12 col-md-6">
                                 <div class="mb-3 input-bx">
                                     <span>เลขที่สัญญา</span>
-                                    <input type="text"class="form-control" name="show_CON_NO" id="show_CON_NO"
+                                    <input type="text" class="form-control" name="show_CON_NO" id="show_CON_NO"
                                         required placeholder=" " disabled />
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>ชั้นศาล/บังคับคดี</span>
-                                    <input type="text"class="form-control" name="show_levels" id="show_levels"
+                                    <input type="text" class="form-control" name="show_levels" id="show_levels"
                                         required placeholder=" " disabled />
-
-
-
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>ศาล</span>
-                                    <input type="text"class="form-control" name="show_tribunal" id="show_tribunal"
-                                        required placeholder=" " disabled />
+                                    <input type="text" class="form-control" name="show_tribunal"
+                                        id="show_tribunal" required placeholder=" " disabled />
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>เลขที่คดีดำ</span>
-                                    <input type="text"class="form-control" name="show_black_no" id="show_black_no"
-                                        required placeholder=" " disabled />
+                                    <input type="text" class="form-control" name="show_black_no"
+                                        id="show_black_no" required placeholder=" " disabled />
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>เลขที่คดีแดง</span>
-                                    <input type="text"class="form-control" name="show_red_no" id="show_red_no"
+                                    <input type="text" class="form-control" name="show_red_no" id="show_red_no"
                                         required placeholder=" " disabled />
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>สำนักงานบังคับคดี</span>
-                                    <input type="text"class="form-control" name="show_exe_office"
+                                    <input type="text" class="form-control" name="show_exe_office"
                                         id="show_exe_office" required placeholder=" " disabled />
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-12 col-md-6">
                                 <div class="mb-3 input-bx">
                                     <span>ประเภทคดี</span>
-                                    <input type="text"class="form-control" name="show_case_type"
+                                    <input type="text" class="form-control" name="show_case_type"
                                         id="show_case_type" required placeholder=" " disabled />
-
                                 </div>
-
                                 <div class="mb-3 input-bx">
                                     <span>โจทย์</span>
-                                    <input type="text"class="form-control" name="show_plaintiff"
+                                    <input type="text" class="form-control" name="show_plaintiff"
                                         id="show_plaintiff" required placeholder=" " disabled />
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>จำเลยที่ 1</span>
-                                    <input type="text"class="form-control" name="show_defendant1"
+                                    <input type="text" class="form-control" name="show_defendant1"
                                         id="show_defendant1" required placeholder=" " disabled />
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>จำเลยที่ 2</span>
-                                    <input type="text"class="form-control" name="show_defendant2"
+                                    <input type="text" class="form-control" name="show_defendant2"
                                         id="show_defendant2" required placeholder=" " disabled />
                                 </div>
                                 <div class="mb-3 input-bx">
                                     <span>จำเลยที่ 3</span>
-                                    <input type="text"class="form-control" name="show_defendant3"
+                                    <input type="text" class="form-control" name="show_defendant3"
                                         id="show_defendant3" required placeholder=" " disabled />
                                 </div>
-
                             </div>
                         </div>
-
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                                 id="closeAddBtn">ปิด</button>
-
                         </div>
-
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-    <div class="container mt-5" style="max-width: 1000px">
-        <h2 class="h2 text-center mb-5 border-bottom pb-3">ปฏิทินงานทนาย</h2>
+    <div class="container mt-3"
+        style="max-width: 1000px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <h3 class="h2 text-center mb-5 border-bottom pb-3">ปฏิทินงานทนาย</h3>
         <div id='full_calendar_events'>
-
-            <input type="hidden"class="form-control" value="{{ count($event) }}" name="count" id="count"
-                required placeholder=" " />
+            <input type="hidden" class="form-control" value="1" name="count" id="count" required
+                placeholder=" " />
         </div>
     </div>
-
-    <!-- Button trigger modal -->
-
 </div>
 
 
@@ -242,19 +206,18 @@
             }
         });
 
-       
-
-
-
-
-
+        function getHeaderOptions() {
+            return $(window).width() < 576 ? {
+                left: 'prev,next',
+                center: 'title '
+            } : {
+                left: 'prev,next ',
+                center: 'title '
+            };
+        }
         var calendar = $('#full_calendar_events').fullCalendar({
             editable: true,
-            editable: true,
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-            },
+            header: getHeaderOptions(),
 
             events: SITEURL + "/calendar-event",
             // displayEventTime: true,
@@ -539,6 +502,19 @@
                 calendar.fullCalendar('unselect');
             }
         });
+        $(document).ready(function() {
+            var calendarEl = document.getElementById('full_calendar_events');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                // Your FullCalendar options here
+            });
+            calendar.render();
+
+            // Re-render the calendar on window resize to ensure responsiveness
+            $(window).resize(function() {
+                calendar.updateSize();
+            });
+        });
+
 
 
     });
@@ -551,5 +527,25 @@
         toastr.error(message, 'Event');
     }
 </script>
+<style>
+    #full_calendar_events {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    #full_calendar_events .fc {
+        max-width: 100%;
+        height: auto;
+        min-height: 200px;
+        /* Set a minimum height */
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 15px;
+    }
+</style>
 
 @endsection

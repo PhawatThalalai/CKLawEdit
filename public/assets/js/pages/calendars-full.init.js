@@ -108,8 +108,8 @@ File: Apex Chart init js
       defaultView: 'dayGridMonth',
       themeSystem: 'bootstrap',
       header: {
-        left: 'prev,next today',
-        center: 'title',
+        left: 'prev,next ',
+        center: 'title ',
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
       },
       eventClick: function eventClick(info) {

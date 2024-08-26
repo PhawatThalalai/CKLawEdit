@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col-2">
                                 <img class="img-profile rounded-circle"
-                                src="{{ asset('dist/img/leasingLogo1.jpg') }}"style="max-width: 100%;">
+                                    src="{{ asset('dist/img/leasingLogo1.jpg') }}"style="max-width: 100%;">
                             </div>
                             <div class="col-10 m-auto">
                                 <h6>ชูเกียรติลิสซิ่ง (CHOOKIAT LEASING)</h6>
@@ -61,7 +61,7 @@
                         </li>
 
                         <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
+                        {{-- <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
@@ -109,10 +109,10 @@
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                             </div>
-                        </li>
+                        </li> --}}
 
                         <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
+                        {{-- <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
@@ -175,7 +175,7 @@
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                             </div>
-                        </li>
+                        </li> --}}
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -183,15 +183,16 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
-                                <img class="img-profile rounded-circle"
-                                    src="{{ asset('img/undraw_profile.svg') }}">
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                                <img class="img-profile rounded-circle" src="{{ asset('img/undraw_profile.svg') }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                @if(@Auth::user()->position == 'Admin')
-                                    <a class="dropdown-item" href ="{{ route('static.index') }}?type={{1}}">
+                                @if (@Auth::user()->position == 'Admin')
+                                    <a class="dropdown-item"
+                                        href ="{{ route('static.index') }}?type={{ 1 }}">
                                         <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                         ตั้งค่าระบบ
                                     </a>
@@ -202,7 +203,9 @@
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <form method="POST" action="{{ route('logout') }}" class="d-grid ">
                                         @csrf
-                                        <button class="dropdown-item" type="submit" value="out"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> ออกจากระบบ</button>
+                                        <button class="dropdown-item" type="submit" value="out"><i
+                                                class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            ออกจากระบบ</button>
                                     </form>
                                 </a>
                             </div>
@@ -212,3 +215,10 @@
 
                 </nav>
                 <!-- End of Topbar -->
+                <script>
+                    document.getElementById('sidebarToggleTop').addEventListener('click', function() {
+                        let sidebarStatus = localStorage.getItem('sidebarStatus') === 'true';
+                        localStorage.setItem('sidebarStatus', !sidebarStatus);
+                        window.dispatchEvent(new Event('storage')); // แจ้งไปยังทุกแท็บที่เปิด
+                    });
+                </script>

@@ -59,13 +59,13 @@ class DataExecution extends Controller
             ->where('exe_old', NULL)
             ->get();
 
-        // $dataCount1 = Execution_debt::where('status', 'ขั้นสืบทรัพย ์')->get();
-        // $dataCount1 = DB::table('LawExe')
-        //     ->where('status_exe', 'Y')
-        //     ->where('status_close', 'N')
-        //     ->where('status', 'ขั้นสืบทรัพย์')
-        //     ->where('exe_old', NULL)
-        //     ->get();
+        $dataCount1 = Execution_debt::where('status', 'ขั้นสืบทรัพย ์')->get();
+        $dataCount1 = DB::table('LawExe')
+            ->where('status_exe', 'Y')
+            ->where('status_close', 'N')
+            ->where('status', 'ขั้นสืบทรัพย์')
+            ->where('exe_old', NULL)
+            ->get();
 
         $dataCount1 = DB::table('LawExe')
             ->when($type_time == 'exe_date', function ($query) use ($dateStart, $dateEnd) {
@@ -140,7 +140,7 @@ class DataExecution extends Controller
         if ($request->type == 'index') {
             return view('DataCustomer.view');
         } elseif ($request->type == 'DataExecution') {
-
+         
             // $data = Execution_debt::get();
             $data = DB::table('LawExe')
                 ->when($type_time == 'exe_date', function ($query) use ($dateStart, $dateEnd) {
@@ -369,7 +369,18 @@ class DataExecution extends Controller
 
     public function edit(Request $request, $id)
     {
-        //
+        if ($request->type == 'Edit-invest') {
+            return view('DataLawsuit.section-execution.edit-invest');
+        }
+        if ($request->type == 'Edit-prop') {
+            return view('DataLawsuit.section-execution.edit-prop');
+        }
+        if ($request->type == 'Edit-seques') {
+            return view('DataLawsuit.section-execution.edit-seques');
+        }
+        if ($request->type == 'Edit-aunction') {
+            return view('DataLawsuit.section-execution.edit-aunction');
+        }
     }
 
 
@@ -915,4 +926,17 @@ class DataExecution extends Controller
     {
         //
     }
+    public function showInvest(){
+        return view('DataLawsuit.section-execution.view-invest');
+    }
+    public function showProp(){
+        return view('DataLawsuit.section-execution.view-prop');
+    }
+    public function showSeques(){
+        return view('DataLawsuit.section-execution.view-seques');
+    }
+    public function showAunction(){
+        return view('DataLawsuit.section-execution.view-aunction');
+    }
+
 }

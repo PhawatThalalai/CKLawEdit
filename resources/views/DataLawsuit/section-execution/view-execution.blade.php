@@ -3,11 +3,10 @@
 @section('execution', 'active')
 
 <div class="row g-1">
-
     {{-- header content --}}
     <div class="row mb-2 g-1">
         <div class="col-3">
-            <h5 class=" fw-semibold text-primary"><i class="fa-solid fa-address-book"></i> ฐานข้อมูลลูกค้าชั้นบังคับคดี
+            <h5 class=" fw-semibold text-primary"><i class="fa-solid fa-address-book"></i> ฐานข้อมูลลูกหนี้ชั้นบังคับคดี
             </h5>
         </div>
 
@@ -17,20 +16,24 @@
                     <div class="row g-2">
                         <div class="col-xl">
                             <select class="form-select" name="type_time" id="">
-                                <option value="exe_date" {{ @$type_time == 'exe_date' ? 'selected' : '' }}>วันที่ส่งบังคับคดี</option>
-                                <option value="date_confiscation" {{ @$type_time == 'date_confiscation' ? 'selected' : '' }}>วันที่ตั้งเรื่องยึดทรัพย์</option>
-                                <option value="date_announce_first" {{ @$type_time == 'date_announce_first' ? 'selected' : '' }}>วันขายทอดตลาด</option>
-                                
+                                <option value="exe_date" {{ @$type_time == 'exe_date' ? 'selected' : '' }}>
+                                    วันที่ส่งบังคับคดี</option>
+                                <option value="date_confiscation"
+                                    {{ @$type_time == 'date_confiscation' ? 'selected' : '' }}>วันที่ตั้งเรื่องยึดทรัพย์
+                                </option>
+                                <option value="date_announce_first"
+                                    {{ @$type_time == 'date_announce_first' ? 'selected' : '' }}>วันขายทอดตลาด</option>
+
                             </select>
                         </div>
                         <div class="col-xl">
-                            <input type="date" value="{{$dateStart}}"
+                            <input type="date" value="{{ $dateStart }}"
                                 class="form-control rounded-pill border border-0 shadow-sm" name = "dateStart">
                         </div>
                         <div class="col-xl">
-                            <input type="date" value="{{$dateEnd}}"
+                            <input type="date" value="{{ $dateEnd }}"
                                 class="form-control rounded-pill border border-0 shadow-sm" name = "dateEnd">
-                            <input type="hidden" value="{{$type}}"
+                            <input type="hidden" value="{{ $type }}"
                                 class="form-control rounded-pill border border-0 shadow-sm" name = "type">
                         </div>
                         <div class="col-xl col-md col-lg col-sm-12 d-grid gap-2">
@@ -40,12 +43,32 @@
                 </form>
             </div>
         </div>
-        
-        <div class="col-2 ">
+
+        <div class="col-2">
             <div class="text-sm-end">
                 <a class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2" data-bs-toggle="modal"
                     data-bs-target="#modal-md" data-link="{{ route('Exe.create') }}?type={{ 'ExportExcelExe' }}">
                     <i class="fa-solid fa-download"></i> Export/Import
+                </a>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="text-sm-end">
+                <a class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                    href="{{ route('showInvest') }}"></i>
+                    ข้อมูลสืบทรัพย์/คัดถ่าย
+                </a>
+                <a class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                    href="{{ route('showProp') }}"></i>
+                    ข้อมูลนำชี้ทรัพย์
+                </a>
+                <a class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                    href="{{ route('showSeques') }}"></i>
+                    ข้อมูลตั้งเรื่องยึดทรัพย์
+                </a>
+                <a class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                    href="{{ route('showAunction') }}"></i>
+                    ข้อมูลประกาศขายทอดตลาด
                 </a>
             </div>
         </div>
@@ -71,40 +94,7 @@
     {{-- <div class="col-3">
         @include('DataCustomer.section-cus.Card-Cus')
     </div> --}}
-
-    <div class="card col-lg-2 ml-4 mr-4 ">
-        <div class="card-body">
-            <div class="row">
-                <a href="{{ route('Exe.index') }}?type={{ 'DataExecution' }}" type="button"
-                    class="{{ $type == 'DataExecution' ? 'btn btn-primary' : 'btn btn-outline-primary' }}   btn-rounded waves-effect waves-light mb-2 me-2 ">
-                    <i class="mdi mdi-plus me-1"></i> ลูกค้าทั้งหมด <span
-                        class="badge badge-danger">{{ $countAll }}</span>
-                </a>
-                <a href="{{ route('Exe.index') }}?type={{ 'DataExe1' }}" type="button"
-                    class="{{ $type == 'DataExe1' ? 'btn btn-primary' : 'btn btn-outline-primary' }}  btn-rounded waves-effect waves-light mb-2 me-2">
-                    <i class="mdi mdi-plus me-1"></i> ลูกค้าขั้นสืบทรัพย์ <span
-                        class="badge badge-danger">{{ $count1 }}</span>
-                </a>
-                <a href="{{ route('Exe.index') }}?type={{ 'DataExe2' }}" type="button"
-                    class="{{ $type == 'DataExe2' ? 'btn btn-primary' : 'btn btn-outline-primary' }} btn-rounded waves-effect waves-light mb-2 me-2">
-                    <i class="mdi mdi-plus me-1"></i>ลูกค้าขั้นคัดโฉนด <span
-                        class="badge badge-danger">{{ $count2 }}</span>
-                </a>
-                <a href="{{ route('Exe.index') }}?type={{ 'DataExe3' }}" type="button"
-                    class="{{ $type == 'DataExe3' ? 'btn btn-primary' : 'btn btn-outline-primary' }} btn-rounded waves-effect waves-light mb-2 me-2">
-                    <i class="mdi mdi-plus me-1"></i> ลูกค้าขั้นตั้งเรื่องยึดทรัพย์ <span
-                        class="badge badge-danger">{{ $count3 }}</span>
-                </a>
-                <a href="{{ route('Exe.index') }}?type={{ 'DataExe4' }}" type="button"
-                    class="{{ $type == 'DataExe4' ? 'btn btn-primary' : 'btn btn-outline-primary' }} btn-rounded waves-effect waves-light mb-2 me-2">
-                    <i class="mdi mdi-plus me-1"></i> ลูกค้าขั้นประกาศขายทอดตลาด <span
-                        class="badge badge-danger">{{ $count4 }}</span>
-                </a>
-                
-            </div>
-        </div>
-    </div>
-    <div class="card col-lg-9">
+    <div class="card col-12">
         <div class="card-body">
             <div class="table-responsive" style="overflow-x:hidden">
                 <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
@@ -116,30 +106,41 @@
                                 class="table dailytable table-hover Custable nowrap dataTable no-footer dtr-inline">
                                 <thead>
                                     <tr role="row">
+                                        <th style="text-align: center;">ปีที่ฟ้อง</th>
                                         <th style="text-align: center;">เลขที่สัญญา</th>
-                                        <th style="text-align: center;">ชื่อ-สกุล</th>
-                                        {{-- <th style="text-align: center;">ประเภทคดี</th> --}}
+                                        <th style="text-align: center;">จำเลย</th>
+                                        <th style="text-align: center;">หมายเลขคดี</th>
+                                        <th style="text-align: center;">หน่วยงาน</th>
+                                        <th style="text-align: center;">ประเภทคดี</th>
+                                        <th style="text-align: center;">รายงานศาล</th>
                                         <th style="text-align: center;">สถานะ</th>
-                                        <th style="text-align: center;">ดูรายละเอียด</th>
                                     </tr>
 
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $key => $item)
-                                        <tr>
+                                        <tr data-href="{{ route('Cus.show', $item->id) }}?type={{ 'showDetail' }}">
+                                            <td style="text-align: center;">
+                                                {{ @$item->date_tribunal ? \Carbon\Carbon::parse($item->date_tribunal)->year + 543 : '' }}
+                                            </td>
                                             <td style="text-align: center;">{{ @$item->CON_NO }} </td>
-                                            <td style="text-align: center;">{{ @$item->name }}
+                                            <td style="text-align: center;">{{ @$item->prefix }}{{ @$item->name }}
                                                 {{ @$item->surname }}
                                             </td>
-                                            {{-- <td style="text-align: center;">ฟ้อง{{ $item->case_type }}</td> --}}
-                                            <td style="text-align: center;">{{ $item->status }}</td>
                                             <td style="text-align: center;">
-                                                <a href="{{ route('Cus.show', $item->cus_id) }}?type={{ 'showDetail' }}"
-                                                    type="button"
-                                                    class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2">
-                                                    <i class="mdi mdi-plus me-1"></i> ดูรายละเอียด
-                                                </a>
+                                                <p>{{ $item->black_no }}</p>
+                                                <p class="text-danger">{{ $item->red_no }}</p>
                                             </td>
+                                            <td style="text-align: center;">
+                                                ศาลจังหวัด {{ $item->exe_office }}
+
+                                            </td>
+                                            {{-- <td style="text-align: center;">ฟ้อง{{ $item->case_type }}</td> --}}
+                                            <td style="text-align: center;">{{ $item->case_type }}</td>
+                                            <td style="text-align: center;">
+                                                {{ $item->exe_status }}
+                                            </td>
+                                            <td style="text-align: center;">{{ $item->status }}</td>
 
                                         </tr>
                                     @endforeach

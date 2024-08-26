@@ -7,7 +7,7 @@
                 {{-- <img src="{{ URL::asset('\assets/images/calculator.png') }}" alt="" style="width: 40px;"> --}}
             </div>
             <div class="flex-grow-1 overflow-hidden">
-                <h5 class="text-primary fw-semibold pb-2">เพิ่มลูกค้า</h5>
+                <h5 class="text-primary fw-semibold pb-2">เพิ่มข้อมูลลูกหนี้</h5>
                 <p class="border-primary border-bottom mb-0"></p>
             </div>
         </div>
@@ -20,12 +20,12 @@
                 <li class="nav-item col text-center d-grid" role="presentation">
                     <button class="nav-link active border-black" id="pills-home-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                        aria-selected="true">ข้อมูลลูกค้า</button>
+                        aria-selected="true">ข้อมูลลูกหนี้</button>
                 </li>
                 <li class="nav-item col text-center d-grid" role="presentation">
                     <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                        aria-selected="false">เพิ่มลูกค้าใหม่</button>
+                        aria-selected="false">เพิ่มลูกหนี้ใหม่</button>
                 </li>
             </ul>
         </div>
@@ -36,8 +36,6 @@
                     <div class="col-6 mt-3">
                         <input type="text"class="form-control" name="CON_NO_Search" id="CON_NO_Search" required
                             placeholder="เลขที่สัญญา" />
-                        
-                       
                     </div>
                     <div class="col-3 mt-3">
                         <select class="form-select addOPR" id="plaintiff" name="plaintiff" required>
@@ -54,9 +52,9 @@
                     @include('DataCustomer.section-cus.show-search')
                 </div>
                 <div class="modal-footer">
-                   
-                    <button type="button" class="btn btn-danger " class="close"
-                        data-bs-dismiss="modal" aria-label="Close">ปิด</button>
+
+                    <button type="button" class="btn btn-danger " class="close" data-bs-dismiss="modal"
+                        aria-label="Close">ปิด</button>
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -65,16 +63,16 @@
                     <div class="row mt-3">
                         <div class="col-9">
                             <span class=" fw-semibold text-primary mt-2"><i class="fa-solid fa-address-book"></i>
-                                ข้อมูลลูกค้า
-                                (Data Customer)</span>
+                                ข้อมูลลูกหนี้
+                                (จำเลยที่ 1)</span>
                         </div>
                     </div>
                     <div class="col-12 mt-3">
                         <form id='create_cus'>
                             <div>
-                                <div class="row ">
+                                <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="mb-3 ">
+                                        <div class="mb-3">
                                             <span>โจทย์</span>
                                             <select class="form-select addOPR" id="plaintiff" name="plaintiff" required>
                                                 @foreach ($Plaintiff as $item)
@@ -82,18 +80,6 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="mb-3 ">
-                                            <span>เลขที่สัญญา</span>
-                                            <input type="text"class="form-control" name="CON_NO" id="CON_NO"
-                                                required placeholder=" " />
-                                        </div>
-                                        <div class="mb-3 input-bx">
-                                            <span>ชื่อ</span>
-                                            <input type="text" class="form-control" name="name" id="name"
-                                                required placeholder=" " />
-                                        </div>
-
-
                                         <div class="mb-3 input-bx">
                                             <span>เลขบัตรประชาชน</span>
                                             <input type="text" class="form-control input-mask"
@@ -101,61 +87,279 @@
                                                 data-inputmask="'mask': '9-9999-99999-99-9'" data-bs-toggle="tooltip"
                                                 title="เลขบัตรประชาชน" required />
                                         </div>
-                                        {{-- <div class="mb-3 input-bx">
-                                        <span>คดีหมายเลขดำที่</span>
-                                        <input type="text"class="form-control" name="black_no" id="black_no" required
-                                            placeholder=" " />
-                                    </div> --}}
-
-                                        {{-- <div class="mb-3 input-bx">
-                                        <span>ทุนทรัพย์ฟ้อง</span>
-                                        <input type="text" class="form-control" onkeyup="autoCurrenncy()"
-                                            name="capital_sue"
-                                            id="capital_sue" required placeholder="" />
-                
-                
-                                    </div> --}}
-
-                                    </div>
-                                    <div class="col-sm-6 ">
-
                                         <div class="mb-3 input-bx">
+                                            <span>ชื่อ</span>
+                                            <input type="text" class="form-control" name="name" id="name"
+                                                required placeholder=" " />
+                                        </div>
+                                        {{-- <div class="mb-3 input-bx">
+                                            <span>เบอร์โทร 1 </span>
+                                            <input type="text" class="form-control input-mask"
+                                                value="{{ trim(@$item->PhoneNum) }}" name="PhoneNum" id="PhoneNum"
+                                                data-bs-toggle="tooltip" data-inputmask="'mask': '999-9999999'"
+                                                required placeholder="" />
+                                        </div> --}}
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="mb-3 input-bx">
+                                            <div class="mb-3">
+                                                <span>เลขที่สัญญา</span>
+                                                <input type="text" class="form-control" name="CON_NO" id="CON_NO"
+                                                    required placeholder=" " />
+                                            </div>
                                             <span>คำนำหน้า</span>
-                                            <select class="form-select addOPR" id="prefix" name="prefix" required>
+                                            <select class="form-select addOPR" id="prefix" name="prefix"
+                                                required>
                                                 <option value="นาย">นาย</option>
                                                 <option value="นาง">นาง</option>
                                                 <option value="นางสาว">นางสาว</option>
                                             </select>
                                         </div>
-                                        <div class="mb-3 input-bx">
-                                            <span>เบอร์โทร</span>
-                                            <input type="text" class="form-control input-mask"
-                                                value="{{ trim(@$item->PhoneNum) }}" name="PhoneNum" id="PhoneNum"
-                                                data-bs-toggle="tooltip" data-inputmask="'mask': '999-9999999'"
-                                                required placeholder="" />
+                                        <div class="row">
+                                            <div class="col-6 pr-0">
+                                                <span>นามสกุล</span>
+                                                <input type="text" name="surname" value="{{ @$data->surname }}"
+                                                    class="form-control" placeholder="" required />
+                                            </div>
+                                            <div class="col-6">
+                                                <span>จำเลยที่</span>
+                                                <input type="text" name="Defname" value="{{ @$data->Defname }}"
+                                                    class="form-control" placeholder="" required />
+                                            </div>
                                         </div>
-                                        <div class="mb-3 input-bx">
-                                            <span>นามสกุล</span>
-                                            <input type="text" class="form-control" name="surname" id="surname"
-                                                required />
-                                        </div>
-
-                                        {{-- <div class="mb-3 input-bx">
-                                        <span>ศาลรับฟ้องวันที่</span>
-                                        <input type="date" value="" name="date_tribunal" id="date_tribunal" class="form-control"  max="{{date('Y-m-d')}}">
-                                     
-                                    </div> --}}
-
+                                        {{-- <div class="row mt-3">
+                                            <div class="col-12">
+                                                <span>เบอร์โทร 2</span>
+                                                <input type="text" class="form-control input-mask"
+                                                    value="{{ trim(@$item->PhoneNum) }}" name="PhoneNum" id="PhoneNum"
+                                                    data-bs-toggle="tooltip" data-inputmask="'mask': '999-9999999'"
+                                                    required placeholder="" />
+                                            </div>
+                                        </div> --}}
                                     </div>
+
                                 </div>
 
+
+
                                 <div class="row">
+                                    <div class="col-9">
+                                        <span class=" fw-semibold text-primary mt-2"><i
+                                                class="fa-solid fa-location-dot"></i>
+                                            ที่อยู่ปัจจุบัน :</span>
+                                    </div>
                                     <div class="col-12 col-lg-6">
                                         <div class="form-group row mb-0">
-                                            <p class="col-sm-4 col-form-label text-right text-red">Tag Address. : </p>
+                                            <p class="col-sm-4 col-form-label text-right d-none d-sm-block text-red">
+                                                บ้านเลขที่ / หมู่ : </p>
+                                            <div class="col-12 col-sm-7">
+                                                <div class="row">
+                                                    <div class="col-6 pr-0">
+                                                        <p
+                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right text-red">
+                                                            บ้านเลขที่ :</p>
+                                                        <input type="text" name="HouseNumber"
+                                                            value="{{ @$data->HouseNumber }}"
+                                                            class="form-control form-control-sm textSize-13"
+                                                            placeholder = "บ้านเลขที่" required />
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <p
+                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right">
+                                                            หมู่ :</p>
+                                                        <input type="text" name="Moo"
+                                                            value="{{ @$data->Moo }}"
+                                                            class="form-control form-control-sm textSize-13"
+                                                            placeholder = "หมู่" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group row mb-0">
+                                            <p class="col-sm-4 col-form-label text-right d-none d-sm-block text-red">
+                                                ถนน / ซอย : </p>
+                                            <div class="col-12 col-sm-7">
+                                                <div class="row">
+                                                    <div class="col-6 pr-0">
+                                                        <p
+                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right text-red">
+                                                            ถนน :</p>
+                                                        <input type="text" name="Road" {{-- value="{{ @$data->HouseNumber }}" --}}
+                                                            class="form-control form-control-sm textSize-13"
+                                                            placeholder = "ถนน" required />
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <p
+                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right">
+                                                            ตรอก / ซอย :</p>
+                                                        <input type="text" name="Soi" {{-- value="{{ @$data->Moo }}" --}}
+                                                            class="form-control form-control-sm textSize-13"
+                                                            placeholder = "ตรอก / ซอย" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group row mb-0">
+                                            <p class="col-sm-4 col-form-label text-right">ภูมิภาค : </p>
                                             <div class="col-sm-7">
-                                                <input type="text" value="{{ @$data->Code_BrokerAdds }}"
-                                                    class="form-control form-control-sm textSize-13" readonly />
+                                                @php
+                                                    $dataZone = \App\Models\TB_Provinces::selectRaw(
+                                                        'Zone_pro, count(*) as total',
+                                                    )
+                                                        ->groupBy('Zone_pro')
+                                                        ->orderBY('Zone_pro', 'ASC')
+                                                        ->get();
+                                                @endphp
+                                                <select class="form-control form-control-sm textSize-13 houseZone"
+                                                    name="Region" id="Region" required>
+                                                    <option value="">--- ภูมิภาค ---</option>
+                                                    @foreach ($dataZone as $key => $Zone)
+                                                        <option value="{{ $Zone->Zone_pro }}"
+                                                            {{ $Zone->Zone_pro == @$data->Region ? 'selected' : '' }}>
+                                                            {{ $Zone->Zone_pro }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group row mb-0">
+                                            <p class="col-sm-4 col-form-label text-right">จังหวัด : </p>
+                                            <div class="col-sm-7">
+                                                @php
+                                                    $Province = \App\Models\TB_Provinces::where(
+                                                        'Zone_pro',
+                                                        @$data->Region,
+                                                    )
+                                                        ->selectRaw('Province_pro, count(*) as total')
+                                                        ->groupBy('Province_pro')
+                                                        ->orderBY('Province_pro', 'ASC')
+                                                        ->get();
+                                                @endphp
+                                                <select class="form-control form-control-sm textSize-13 houseProvince"
+                                                    name="Province" required>
+                                                    <option value="" selected>--- จังหวัด ---</option>
+                                                    @foreach ($Province as $key => $value)
+                                                        <option value="{{ $value->Province_pro }}"
+                                                            {{ $value->Province_pro == @$data->Province ? 'selected' : '' }}>
+                                                            {{ $value->Province_pro }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group row mb-0">
+                                            <p class="col-sm-4 col-form-label text-right">อำเภอ : </p>
+                                            <div class="col-sm-7">
+                                                @php
+                                                    $District = \App\Models\TB_Provinces::where(
+                                                        'Province_pro',
+                                                        @$data->Province,
+                                                    )
+                                                        ->selectRaw('District_pro, count(*) as total')
+                                                        ->groupBy('District_pro')
+                                                        ->orderBY('District_pro', 'ASC')
+                                                        ->get();
+                                                @endphp
+                                                <select class="form-control form-control-sm textSize-13 houseDistrict"
+                                                    name="District" required>
+                                                    <option value="" selected>--- อำเภอ ---</option>
+                                                    @foreach ($District as $key => $value)
+                                                        <option value="{{ $value->District_pro }}"
+                                                            {{ $value->District_pro == @$data->District ? 'selected' : '' }}>
+                                                            {{ $value->District_pro }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group row mb-0">
+                                            <p class="col-sm-4 col-form-label text-right">ตำบล : </p>
+                                            <div class="col-sm-7">
+                                                @php
+                                                    $Tambon = \App\Models\TB_Provinces::where(
+                                                        'District_pro',
+                                                        @$data->District,
+                                                    )
+                                                        ->selectRaw('Tambon_pro, count(*) as total')
+                                                        ->groupBy('Tambon_pro')
+                                                        ->orderBY('Tambon_pro', 'ASC')
+                                                        ->get();
+                                                @endphp
+                                                <select class="form-control form-control-sm textSize-13 houseTambon"
+                                                    name="Tumbon" required>
+                                                    <option value="" selected>--- ตำบล ---</option>
+                                                    @foreach ($Tambon as $key => $value)
+                                                        <option value="{{ $value->Tambon_pro }}"
+                                                            {{ $value->Tambon_pro == @$data->Tumbon ? 'selected' : '' }}>
+                                                            {{ $value->Tambon_pro }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group row mb-0">
+                                            <p class="col-sm-4 col-form-label text-right">เลขไปรษณีย์ : </p>
+                                            <div class="col-sm-7">
+                                                <input type="number" name="Postcode" value="{{ @$data->Postcode }}"
+                                                    class="form-control form-control-sm textSize-13 Postal"
+                                                    placeholder="เลขไปรษณีย์" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label for="PhoneNum1">เบอร์โทร 1</label>
+                                                <input type="text" name="PhoneNum1" id="PhoneNum1"
+                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                    value="{{ @$item->PhoneNum1 }}"
+                                                    data-inputmask="'mask': '999-9999999'" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label for="PhoneNum2">เบอร์โทร 2</label>
+                                                <input type="text" name="PhoneNum2" id="PhoneNum2"
+                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                    value="{{ @$item->PhoneNum2 }}"
+                                                    data-inputmask="'mask': '999-9999999'" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label for="PhoneNum3">เบอร์โทร 3</label>
+                                                <input type="text" name="PhoneNum3" id="PhoneNum3"
+                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                    value="{{ @$item->PhoneNum3 }}"
+                                                    data-inputmask="'mask': '999-9999999'" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-9">
+                                        <span class=" fw-semibold text-primary mt-2"><i
+                                                class="fa-solid fa-location-dot"></i>
+                                            ที่อยู่ที่ทำงาน :</span>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group row mb-0">
+                                            <p class="col-sm-4 col-form-label text-right text-red">ชื่อที่ทำงาน : </p>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control form-control-sm textSize-13"
+                                                    placeholder="ชื่อที่ทำการ" />
                                             </div>
                                         </div>
                                     </div>
@@ -189,10 +393,38 @@
                                     </div>
                                     <div class="col-12 col-lg-6">
                                         <div class="form-group row mb-0">
+                                            <p class="col-sm-4 col-form-label text-right d-none d-sm-block text-red">
+                                                ถนน / ซอย : </p>
+                                            <div class="col-12 col-sm-7">
+                                                <div class="row">
+                                                    <div class="col-6 pr-0">
+                                                        <p
+                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right text-red">
+                                                            ถนน :</p>
+                                                        <input type="text" name="Road" {{-- value="{{ @$data->HouseNumber }}" --}}
+                                                            class="form-control form-control-sm textSize-13"
+                                                            placeholder = "ถนน" required />
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <p
+                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right">
+                                                            ตรอก / ซอย :</p>
+                                                        <input type="text" name="Soi" {{-- value="{{ @$data->Moo }}" --}}
+                                                            class="form-control form-control-sm textSize-13"
+                                                            placeholder = "ตรอก / ซอย" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group row mb-0">
                                             <p class="col-sm-4 col-form-label text-right">ภูมิภาค : </p>
                                             <div class="col-sm-7">
                                                 @php
-                                                    $dataZone = \App\Models\TB_Provinces::selectRaw('Zone_pro, count(*) as total')
+                                                    $dataZone = \App\Models\TB_Provinces::selectRaw(
+                                                        'Zone_pro, count(*) as total',
+                                                    )
                                                         ->groupBy('Zone_pro')
                                                         ->orderBY('Zone_pro', 'ASC')
                                                         ->get();
@@ -214,7 +446,10 @@
                                             <p class="col-sm-4 col-form-label text-right">จังหวัด : </p>
                                             <div class="col-sm-7">
                                                 @php
-                                                    $Province = \App\Models\TB_Provinces::where('Zone_pro', @$data->Region)
+                                                    $Province = \App\Models\TB_Provinces::where(
+                                                        'Zone_pro',
+                                                        @$data->Region,
+                                                    )
                                                         ->selectRaw('Province_pro, count(*) as total')
                                                         ->groupBy('Province_pro')
                                                         ->orderBY('Province_pro', 'ASC')
@@ -237,7 +472,10 @@
                                             <p class="col-sm-4 col-form-label text-right">อำเภอ : </p>
                                             <div class="col-sm-7">
                                                 @php
-                                                    $District = \App\Models\TB_Provinces::where('Province_pro', @$data->Province)
+                                                    $District = \App\Models\TB_Provinces::where(
+                                                        'Province_pro',
+                                                        @$data->Province,
+                                                    )
                                                         ->selectRaw('District_pro, count(*) as total')
                                                         ->groupBy('District_pro')
                                                         ->orderBY('District_pro', 'ASC')
@@ -260,7 +498,10 @@
                                             <p class="col-sm-4 col-form-label text-right">ตำบล : </p>
                                             <div class="col-sm-7">
                                                 @php
-                                                    $Tambon = \App\Models\TB_Provinces::where('District_pro', @$data->District)
+                                                    $Tambon = \App\Models\TB_Provinces::where(
+                                                        'District_pro',
+                                                        @$data->District,
+                                                    )
                                                         ->selectRaw('Tambon_pro, count(*) as total')
                                                         ->groupBy('Tambon_pro')
                                                         ->orderBY('Tambon_pro', 'ASC')
@@ -288,6 +529,35 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label for="PhoneNum1">เบอร์โทร 1</label>
+                                                <input type="text" name="PhoneNum1" id="PhoneNum1"
+                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                    value="{{ @$item->PhoneNum1 }}"
+                                                    data-inputmask="'mask': '999-9999999'" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label for="PhoneNum2">เบอร์โทร 2</label>
+                                                <input type="text" name="PhoneNum2" id="PhoneNum2"
+                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                    value="{{ @$item->PhoneNum2 }}"
+                                                    data-inputmask="'mask': '999-9999999'" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label for="PhoneNum3">เบอร์โทร 3</label>
+                                                <input type="text" name="PhoneNum3" id="PhoneNum3"
+                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                    value="{{ @$item->PhoneNum3 }}"
+                                                    data-inputmask="'mask': '999-9999999'" required>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 {{-- <div class="row">
                                     <div class="mb-3 input-bx">
@@ -311,8 +581,27 @@
                                         <div class="accordion-body">
                                             <div>
                                                 <div class="row ">
+                                                    <div class="col-9">
+                                                        <span class=" fw-semibold text-primary mt-2"><i
+                                                                class="fa-solid fa-address-book"></i>
+                                                            ผู้ค้ำประกัน
+                                                            (จำเลยที่ 2)</span>
+                                                    </div>
                                                     <div class="col-sm-6">
+                                                        <div class="mb-3 input-bx">
+                                                            <span>เลขบัตรประชาชน</span>
+                                                            <input type="text" class="form-control" name="ID_num1"
+                                                                id="ID_num1" required placeholder=" "
+                                                                data-inputmask="'mask': '9-9999-99999-99-9'" />
+                                                        </div>
 
+                                                        <div class="mb-3 input-bx">
+                                                            <span>ชื่อ</span>
+                                                            <input type="text" class="form-control" name="name1"
+                                                                id="name1" required placeholder=" " />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 ">
                                                         <div class="mb-3 input-bx">
                                                             <span>คำนำหน้า</span>
                                                             <select class="form-select addOPR" id="prefix1"
@@ -323,73 +612,27 @@
                                                             </select>
 
                                                         </div>
-                                                        <div class="mb-3 input-bx">
-                                                            <span>ชื่อ</span>
-                                                            <input type="text" class="form-control" name="name1"
-                                                                id="name1" required placeholder=" " />
+                                                        <div class="row">
+                                                            <div class="col-6 pr-0">
+                                                                <span>นามสกุล</span>
+                                                                <input type="text" name="surname"
+                                                                    value="{{ @$data->surname }}"
+                                                                    class="form-control" placeholder="" required />
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <span>จำเลยที่</span>
+                                                                <input type="text" name="Defname"
+                                                                    value="{{ @$data->Defname }}"
+                                                                    class="form-control" placeholder="" required />
+                                                            </div>
                                                         </div>
-
-
-                                                        <div class="mb-3 input-bx">
-                                                            <span>เลขบัตรประชาชน</span>
-                                                            <input type="text" class="form-control" name="ID_num1"
-                                                                id="ID_num1" required placeholder=" "
-                                                                data-inputmask="'mask': '9-9999-99999-99-9'" />
-                                                        </div>
-                                                        {{-- <div class="mb-3 input-bx">
-                                                <span>คดีหมายเลขดำที่</span>
-                                                <input type="text"class="form-control" name="black_no" id="black_no" required
-                                                    placeholder=" " />
-                                            </div> --}}
-
-
-                                                        {{-- <div class="mb-3 input-bx">
-                                                <span>ทุนทรัพย์ฟ้อง</span>
-                                                <input type="text" class="form-control" onkeyup="autoCurrenncy()"
-                                                    name="capital_sue"
-                                                    id="capital_sue" required placeholder="" />
-                        
-                        
-                                            </div> --}}
-
-                                                    </div>
-                                                    <div class="col-sm-6 ">
-                                                        <div class="mb-3 input-bx">
-                                                            <span>เบอร์โทร</span>
-                                                            <input type="text" class="form-control"
-                                                                name="PhoneNum1" id="PhoneNum1" required
-                                                                placeholder=" "
-                                                                data-inputmask="'mask': '999-9999999'" />
-                                                        </div>
-                                                        <div class="mb-3 input-bx">
-                                                            <span>นามสกุล</span>
-                                                            <input type="text" class="form-control"
-                                                                name="surname1" id="surname1" required />
-                                                        </div>
-
-
-                                                        {{-- <div class="mb-3 input-bx">
-                                                <span>ศาลรับฟ้องวันที่</span>
-                                                
-                                                <input type="date" value="" name="date_tribunal" id="date_tribunal" class="form-control"  max="{{date('Y-m-d')}}">
-                                             
-                                            </div> --}}
-
-
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-12 col-lg-6">
-                                                        <div class="form-group row mb-0">
-                                                            <p class="col-sm-4 col-form-label text-right text-red">Tag
-                                                                Address. : </p>
-                                                            <div class="col-sm-7">
-                                                                <input type="text"
-                                                                    value="{{ @$data->Code_BrokerAdds }}"
-                                                                    class="form-control form-control-sm textSize-13"
-                                                                    readonly />
-                                                            </div>
-                                                        </div>
+                                                    <div class="col-9">
+                                                        <span class=" fw-semibold text-primary mt-2"><i
+                                                                class="fa-solid fa-location-dot"></i>
+                                                            ที่อยู่ปัจจุบัน :</span>
                                                     </div>
                                                     <div class="col-12 col-lg-6">
                                                         <div class="form-group row mb-0">
@@ -402,7 +645,7 @@
                                                                         <p
                                                                             class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right text-red">
                                                                             บ้านเลขที่ :</p>
-                                                                        <input type="text" name="HouseNumber1"
+                                                                        <input type="text" name="HouseNumber"
                                                                             value="{{ @$data->HouseNumber }}"
                                                                             class="form-control form-control-sm textSize-13"
                                                                             placeholder = "บ้านเลขที่" required />
@@ -411,7 +654,7 @@
                                                                         <p
                                                                             class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right">
                                                                             หมู่ :</p>
-                                                                        <input type="text" name="Moo1"
+                                                                        <input type="text" name="Moo"
                                                                             value="{{ @$data->Moo }}"
                                                                             class="form-control form-control-sm textSize-13"
                                                                             placeholder = "หมู่" required />
@@ -422,18 +665,51 @@
                                                     </div>
                                                     <div class="col-12 col-lg-6">
                                                         <div class="form-group row mb-0">
+                                                            <p
+                                                                class="col-sm-4 col-form-label text-right d-none d-sm-block text-red">
+                                                                ถนน / ซอย : </p>
+                                                            <div class="col-12 col-sm-7">
+                                                                <div class="row">
+                                                                    <div class="col-6 pr-0">
+                                                                        <p
+                                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right text-red">
+                                                                            ถนน :</p>
+                                                                        <input type="text" name="Road"
+                                                                            {{-- value="{{ @$data->HouseNumber }}" --}}
+                                                                            class="form-control form-control-sm textSize-13"
+                                                                            placeholder = "ถนน" required />
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <p
+                                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right">
+                                                                            ตรอก / ซอย :</p>
+                                                                        <input type="text" name="Soi"
+                                                                            {{-- value="{{ @$data->Moo }}" --}}
+                                                                            class="form-control form-control-sm textSize-13"
+                                                                            placeholder = "ตรอก / ซอย" required />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
                                                             <p class="col-sm-4 col-form-label text-right">ภูมิภาค :
                                                             </p>
                                                             <div class="col-sm-7">
                                                                 @php
-                                                                    $dataZone = \App\Models\TB_Provinces::selectRaw('Zone_pro, count(*) as total')
+                                                                    $dataZone = \App\Models\TB_Provinces::selectRaw(
+                                                                        'Zone_pro, count(*) as total',
+                                                                    )
                                                                         ->groupBy('Zone_pro')
                                                                         ->orderBY('Zone_pro', 'ASC')
                                                                         ->get();
                                                                 @endphp
                                                                 <select
-                                                                    class="form-control form-control-sm textSize-13 houseZone1"
-                                                                    name="Region1" id="Region1" required>
+                                                                    class="form-control form-control-sm textSize-13 houseZone"
+                                                                    name="Region" id="Region" required>
                                                                     <option value="">--- ภูมิภาค ---</option>
                                                                     @foreach ($dataZone as $key => $Zone)
                                                                         <option value="{{ $Zone->Zone_pro }}"
@@ -450,15 +726,18 @@
                                                             </p>
                                                             <div class="col-sm-7">
                                                                 @php
-                                                                    $Province = \App\Models\TB_Provinces::where('Zone_pro', @$data->Region)
+                                                                    $Province = \App\Models\TB_Provinces::where(
+                                                                        'Zone_pro',
+                                                                        @$data->Region,
+                                                                    )
                                                                         ->selectRaw('Province_pro, count(*) as total')
                                                                         ->groupBy('Province_pro')
                                                                         ->orderBY('Province_pro', 'ASC')
                                                                         ->get();
                                                                 @endphp
                                                                 <select
-                                                                    class="form-control form-control-sm textSize-13 houseProvince1"
-                                                                    name="Province1" required>
+                                                                    class="form-control form-control-sm textSize-13 houseProvince"
+                                                                    name="Province" required>
                                                                     <option value="" selected>--- จังหวัด ---
                                                                     </option>
                                                                     @foreach ($Province as $key => $value)
@@ -475,15 +754,18 @@
                                                             <p class="col-sm-4 col-form-label text-right">อำเภอ : </p>
                                                             <div class="col-sm-7">
                                                                 @php
-                                                                    $District = \App\Models\TB_Provinces::where('Province_pro', @$data->Province)
+                                                                    $District = \App\Models\TB_Provinces::where(
+                                                                        'Province_pro',
+                                                                        @$data->Province,
+                                                                    )
                                                                         ->selectRaw('District_pro, count(*) as total')
                                                                         ->groupBy('District_pro')
                                                                         ->orderBY('District_pro', 'ASC')
                                                                         ->get();
                                                                 @endphp
                                                                 <select
-                                                                    class="form-control form-control-sm textSize-13 houseDistrict1"
-                                                                    name="District1" required>
+                                                                    class="form-control form-control-sm textSize-13 houseDistrict"
+                                                                    name="District" required>
                                                                     <option value="" selected>--- อำเภอ ---
                                                                     </option>
                                                                     @foreach ($District as $key => $value)
@@ -500,15 +782,18 @@
                                                             <p class="col-sm-4 col-form-label text-right">ตำบล : </p>
                                                             <div class="col-sm-7">
                                                                 @php
-                                                                    $Tambon = \App\Models\TB_Provinces::where('District_pro', @$data->District)
+                                                                    $Tambon = \App\Models\TB_Provinces::where(
+                                                                        'District_pro',
+                                                                        @$data->District,
+                                                                    )
                                                                         ->selectRaw('Tambon_pro, count(*) as total')
                                                                         ->groupBy('Tambon_pro')
                                                                         ->orderBY('Tambon_pro', 'ASC')
                                                                         ->get();
                                                                 @endphp
                                                                 <select
-                                                                    class="form-control form-control-sm textSize-13 houseTambon1"
-                                                                    name="Tumbon1" required>
+                                                                    class="form-control form-control-sm textSize-13 houseTambon"
+                                                                    name="Tumbon" required>
                                                                     <option value="" selected>--- ตำบล ---
                                                                     </option>
                                                                     @foreach ($Tambon as $key => $value)
@@ -525,10 +810,267 @@
                                                             <p class="col-sm-4 col-form-label text-right">เลขไปรษณีย์ :
                                                             </p>
                                                             <div class="col-sm-7">
-                                                                <input type="number" name="Postcode1"
+                                                                <input type="number" name="Postcode"
                                                                     value="{{ @$data->Postcode }}"
-                                                                    class="form-control form-control-sm textSize-13 Postal1"
+                                                                    class="form-control form-control-sm textSize-13 Postal"
                                                                     placeholder="เลขไปรษณีย์" required />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <div class="form-group">
+                                                                <label for="PhoneNum1">เบอร์โทร 1 :</label>
+                                                                <input type="text" name="PhoneNum1" id="PhoneNum1"
+                                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                                    value="{{ @$item->PhoneNum1 }}"
+                                                                    data-inputmask="'mask': '999-9999999'" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="form-group">
+                                                                <label for="PhoneNum2">เบอร์โทร 2 :</label>
+                                                                <input type="text" name="PhoneNum2" id="PhoneNum2"
+                                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                                    value="{{ @$item->PhoneNum2 }}"
+                                                                    data-inputmask="'mask': '999-9999999'" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="form-group">
+                                                                <label for="PhoneNum3">เบอร์โทร 3 :</label>
+                                                                <input type="text" name="PhoneNum3" id="PhoneNum3"
+                                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                                    value="{{ @$item->PhoneNum3 }}"
+                                                                    data-inputmask="'mask': '999-9999999'" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-9">
+                                                        <span class=" fw-semibold text-primary mt-2"><i
+                                                                class="fa-solid fa-location-dot"></i>
+                                                            ที่อยู่ที่ทำงาน :</span>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
+                                                            <p class="col-sm-4 col-form-label text-right text-red">
+                                                                ชื่อที่ทำงาน : </p>
+                                                            <div class="col-sm-7">
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm textSize-13"
+                                                                    placeholder="ชื่อที่ทำการ" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
+                                                            <p
+                                                                class="col-sm-4 col-form-label text-right d-none d-sm-block text-red">
+                                                                บ้านเลขที่ / หมู่ : </p>
+                                                            <div class="col-12 col-sm-7">
+                                                                <div class="row">
+                                                                    <div class="col-6 pr-0">
+                                                                        <p
+                                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right text-red">
+                                                                            บ้านเลขที่ :</p>
+                                                                        <input type="text" name="HouseNumber"
+                                                                            value="{{ @$data->HouseNumber }}"
+                                                                            class="form-control form-control-sm textSize-13"
+                                                                            placeholder = "บ้านเลขที่" required />
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <p
+                                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right">
+                                                                            หมู่ :</p>
+                                                                        <input type="text" name="Moo"
+                                                                            value="{{ @$data->Moo }}"
+                                                                            class="form-control form-control-sm textSize-13"
+                                                                            placeholder = "หมู่" required />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
+                                                            <p
+                                                                class="col-sm-4 col-form-label text-right d-none d-sm-block text-red">
+                                                                ถนน / ซอย : </p>
+                                                            <div class="col-12 col-sm-7">
+                                                                <div class="row">
+                                                                    <div class="col-6 pr-0">
+                                                                        <p
+                                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right text-red">
+                                                                            ถนน :</p>
+                                                                        <input type="text" name="Road"
+                                                                            {{-- value="{{ @$data->HouseNumber }}" --}}
+                                                                            class="form-control form-control-sm textSize-13"
+                                                                            placeholder = "ถนน" required />
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <p
+                                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right">
+                                                                            ตรอก / ซอย :</p>
+                                                                        <input type="text" name="Soi"
+                                                                            {{-- value="{{ @$data->Moo }}" --}}
+                                                                            class="form-control form-control-sm textSize-13"
+                                                                            placeholder = "ตรอก / ซอย" required />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
+                                                            <p class="col-sm-4 col-form-label text-right">ภูมิภาค :
+                                                            </p>
+                                                            <div class="col-sm-7">
+                                                                @php
+                                                                    $dataZone = \App\Models\TB_Provinces::selectRaw(
+                                                                        'Zone_pro, count(*) as total',
+                                                                    )
+                                                                        ->groupBy('Zone_pro')
+                                                                        ->orderBY('Zone_pro', 'ASC')
+                                                                        ->get();
+                                                                @endphp
+                                                                <select
+                                                                    class="form-control form-control-sm textSize-13 houseZone"
+                                                                    name="Region" id="Region" required>
+                                                                    <option value="">--- ภูมิภาค ---</option>
+                                                                    @foreach ($dataZone as $key => $Zone)
+                                                                        <option value="{{ $Zone->Zone_pro }}"
+                                                                            {{ $Zone->Zone_pro == @$data->Region ? 'selected' : '' }}>
+                                                                            {{ $Zone->Zone_pro }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
+                                                            <p class="col-sm-4 col-form-label text-right">จังหวัด :
+                                                            </p>
+                                                            <div class="col-sm-7">
+                                                                @php
+                                                                    $Province = \App\Models\TB_Provinces::where(
+                                                                        'Zone_pro',
+                                                                        @$data->Region,
+                                                                    )
+                                                                        ->selectRaw('Province_pro, count(*) as total')
+                                                                        ->groupBy('Province_pro')
+                                                                        ->orderBY('Province_pro', 'ASC')
+                                                                        ->get();
+                                                                @endphp
+                                                                <select
+                                                                    class="form-control form-control-sm textSize-13 houseProvince"
+                                                                    name="Province" required>
+                                                                    <option value="" selected>--- จังหวัด ---
+                                                                    </option>
+                                                                    @foreach ($Province as $key => $value)
+                                                                        <option value="{{ $value->Province_pro }}"
+                                                                            {{ $value->Province_pro == @$data->Province ? 'selected' : '' }}>
+                                                                            {{ $value->Province_pro }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
+                                                            <p class="col-sm-4 col-form-label text-right">อำเภอ : </p>
+                                                            <div class="col-sm-7">
+                                                                @php
+                                                                    $District = \App\Models\TB_Provinces::where(
+                                                                        'Province_pro',
+                                                                        @$data->Province,
+                                                                    )
+                                                                        ->selectRaw('District_pro, count(*) as total')
+                                                                        ->groupBy('District_pro')
+                                                                        ->orderBY('District_pro', 'ASC')
+                                                                        ->get();
+                                                                @endphp
+                                                                <select
+                                                                    class="form-control form-control-sm textSize-13 houseDistrict"
+                                                                    name="District" required>
+                                                                    <option value="" selected>--- อำเภอ ---
+                                                                    </option>
+                                                                    @foreach ($District as $key => $value)
+                                                                        <option value="{{ $value->District_pro }}"
+                                                                            {{ $value->District_pro == @$data->District ? 'selected' : '' }}>
+                                                                            {{ $value->District_pro }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
+                                                            <p class="col-sm-4 col-form-label text-right">ตำบล : </p>
+                                                            <div class="col-sm-7">
+                                                                @php
+                                                                    $Tambon = \App\Models\TB_Provinces::where(
+                                                                        'District_pro',
+                                                                        @$data->District,
+                                                                    )
+                                                                        ->selectRaw('Tambon_pro, count(*) as total')
+                                                                        ->groupBy('Tambon_pro')
+                                                                        ->orderBY('Tambon_pro', 'ASC')
+                                                                        ->get();
+                                                                @endphp
+                                                                <select
+                                                                    class="form-control form-control-sm textSize-13 houseTambon"
+                                                                    name="Tumbon" required>
+                                                                    <option value="" selected>--- ตำบล ---
+                                                                    </option>
+                                                                    @foreach ($Tambon as $key => $value)
+                                                                        <option value="{{ $value->Tambon_pro }}"
+                                                                            {{ $value->Tambon_pro == @$data->Tumbon ? 'selected' : '' }}>
+                                                                            {{ $value->Tambon_pro }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
+                                                            <p class="col-sm-4 col-form-label text-right">เลขไปรษณีย์ :
+                                                            </p>
+                                                            <div class="col-sm-7">
+                                                                <input type="number" name="Postcode"
+                                                                    value="{{ @$data->Postcode }}"
+                                                                    class="form-control form-control-sm textSize-13 Postal"
+                                                                    placeholder="เลขไปรษณีย์" required />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <div class="form-group">
+                                                                <label for="PhoneNum1">เบอร์โทร 1 :</label>
+                                                                <input type="text" name="PhoneNum1" id="PhoneNum1"
+                                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                                    value="{{ @$item->PhoneNum1 }}"
+                                                                    data-inputmask="'mask': '999-9999999'" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="form-group">
+                                                                <label for="PhoneNum2">เบอร์โทร 2 :</label>
+                                                                <input type="text" name="PhoneNum2" id="PhoneNum2"
+                                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                                    value="{{ @$item->PhoneNum2 }}"
+                                                                    data-inputmask="'mask': '999-9999999'" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="form-group">
+                                                                <label for="PhoneNum3">เบอร์โทร 3 :</label>
+                                                                <input type="text" name="PhoneNum3" id="PhoneNum3"
+                                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                                    value="{{ @$item->PhoneNum3 }}"
+                                                                    data-inputmask="'mask': '999-9999999'" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -550,92 +1092,58 @@
                                         <div class="accordion-body">
                                             <div>
                                                 <div class="row ">
+                                                    <div class="col-9">
+                                                        <span class=" fw-semibold text-primary mt-2"><i
+                                                                class="fa-solid fa-address-book"></i>
+                                                            ผู้ค้ำประกัน
+                                                            (จำเลยที่ 2)</span>
+                                                    </div>
                                                     <div class="col-sm-6">
                                                         <div class="mb-3 input-bx">
+                                                            <span>เลขบัตรประชาชน</span>
+                                                            <input type="text" class="form-control" name="ID_num1"
+                                                                id="ID_num1" required placeholder=" "
+                                                                data-inputmask="'mask': '9-9999-99999-99-9'" />
+                                                        </div>
+
+                                                        <div class="mb-3 input-bx">
+                                                            <span>ชื่อ</span>
+                                                            <input type="text" class="form-control" name="name1"
+                                                                id="name1" required placeholder=" " />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 ">
+                                                        <div class="mb-3 input-bx">
                                                             <span>คำนำหน้า</span>
-                                                            <select value="{{ trim(@$item->case_type) }}"
-                                                                class="form-select addOPR" id="prefix2"
-                                                                name="prefix2" required>
+                                                            <select class="form-select addOPR" id="prefix1"
+                                                                name="prefix1" required>
                                                                 <option value="นาย">นาย</option>
                                                                 <option value="นาง">นาง</option>
                                                                 <option value="นางสาว">นางสาว</option>
                                                             </select>
 
                                                         </div>
-
-
-                                                        <div class="mb-3 input-bx">
-                                                            <span>ชื่อ</span>
-                                                            <input type="text" class="form-control" name="name2"
-                                                                id="name2" required placeholder=" " />
+                                                        <div class="row">
+                                                            <div class="col-6 pr-0">
+                                                                <span>นามสกุล</span>
+                                                                <input type="text" name="surname"
+                                                                    value="{{ @$data->surname }}"
+                                                                    class="form-control" placeholder="" required />
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <span>จำเลยที่</span>
+                                                                <input type="text" name="Defname"
+                                                                    value="{{ @$data->Defname }}"
+                                                                    class="form-control" placeholder="" required />
+                                                            </div>
                                                         </div>
-
-
-                                                        <div class="mb-3 input-bx">
-                                                            <span>เลขบัตรประชาชน</span>
-                                                            <input type="text" class="form-control" name="ID_num2"
-                                                                id="ID_num2" required placeholder=" "
-                                                                data-inputmask="'mask': '9-9999-99999-99-9'" />
-                                                        </div>
-                                                        {{-- <div class="mb-3 input-bx">
-                                                    <span>คดีหมายเลขดำที่</span>
-                                                    <input type="text"class="form-control" name="black_no" id="black_no" required
-                                                        placeholder=" " />
-                                                </div> --}}
-
-
-                                                        {{-- <div class="mb-3 input-bx">
-                                                    <span>ทุนทรัพย์ฟ้อง</span>
-                                                    <input type="text" class="form-control" onkeyup="autoCurrenncy()"
-                                                        name="capital_sue"
-                                                        id="capital_sue" required placeholder="" />
-                            
-                            
-                                                </div> --}}
-
-                                                    </div>
-                                                    <div class="col-sm-6 ">
-
-
-                                                        <div class="mb-3 input-bx">
-                                                            <span>เบอร์โทร</span>
-                                                            <input type="text" class="form-control"
-                                                                name="PhoneNum2" id="PhoneNum2" required
-                                                                placeholder=" "
-                                                                data-inputmask="'mask': '999-9999999'" />
-                                                        </div>
-                                                        <div class="mb-3 input-bx">
-                                                            <span>นามสกุล</span>
-                                                            <input type="text" class="form-control"
-                                                                name="surname2" id="surname2" required />
-                                                        </div>
-
-
-
-
-
-                                                        {{-- <div class="mb-3 input-bx">
-                                                    <span>ศาลรับฟ้องวันที่</span>
-                                                    
-                                                    <input type="date" value="" name="date_tribunal" id="date_tribunal" class="form-control"  max="{{date('Y-m-d')}}">
-                                                 
-                                                </div> --}}
-
-
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-12 col-lg-6">
-                                                        <div class="form-group row mb-0">
-                                                            <p class="col-sm-4 col-form-label text-right text-red">Tag
-                                                                Address. : </p>
-                                                            <div class="col-sm-7">
-                                                                <input type="text"
-                                                                    value="{{ @$data->Code_BrokerAdds }}"
-                                                                    class="form-control form-control-sm textSize-13"
-                                                                    readonly />
-                                                            </div>
-                                                        </div>
+                                                    <div class="col-9">
+                                                        <span class=" fw-semibold text-primary mt-2"><i
+                                                                class="fa-solid fa-location-dot"></i>
+                                                            ที่อยู่ปัจจุบัน :</span>
                                                     </div>
                                                     <div class="col-12 col-lg-6">
                                                         <div class="form-group row mb-0">
@@ -648,7 +1156,7 @@
                                                                         <p
                                                                             class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right text-red">
                                                                             บ้านเลขที่ :</p>
-                                                                        <input type="text" name="HouseNumber2"
+                                                                        <input type="text" name="HouseNumber"
                                                                             value="{{ @$data->HouseNumber }}"
                                                                             class="form-control form-control-sm textSize-13"
                                                                             placeholder = "บ้านเลขที่" required />
@@ -657,7 +1165,7 @@
                                                                         <p
                                                                             class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right">
                                                                             หมู่ :</p>
-                                                                        <input type="text" name="Moo2"
+                                                                        <input type="text" name="Moo"
                                                                             value="{{ @$data->Moo }}"
                                                                             class="form-control form-control-sm textSize-13"
                                                                             placeholder = "หมู่" required />
@@ -668,18 +1176,51 @@
                                                     </div>
                                                     <div class="col-12 col-lg-6">
                                                         <div class="form-group row mb-0">
+                                                            <p
+                                                                class="col-sm-4 col-form-label text-right d-none d-sm-block text-red">
+                                                                ถนน / ซอย : </p>
+                                                            <div class="col-12 col-sm-7">
+                                                                <div class="row">
+                                                                    <div class="col-6 pr-0">
+                                                                        <p
+                                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right text-red">
+                                                                            ถนน :</p>
+                                                                        <input type="text" name="Road"
+                                                                            {{-- value="{{ @$data->HouseNumber }}" --}}
+                                                                            class="form-control form-control-sm textSize-13"
+                                                                            placeholder = "ถนน" required />
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <p
+                                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right">
+                                                                            ตรอก / ซอย :</p>
+                                                                        <input type="text" name="Soi"
+                                                                            {{-- value="{{ @$data->Moo }}" --}}
+                                                                            class="form-control form-control-sm textSize-13"
+                                                                            placeholder = "ตรอก / ซอย" required />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
                                                             <p class="col-sm-4 col-form-label text-right">ภูมิภาค :
                                                             </p>
                                                             <div class="col-sm-7">
                                                                 @php
-                                                                    $dataZone = \App\Models\TB_Provinces::selectRaw('Zone_pro, count(*) as total')
+                                                                    $dataZone = \App\Models\TB_Provinces::selectRaw(
+                                                                        'Zone_pro, count(*) as total',
+                                                                    )
                                                                         ->groupBy('Zone_pro')
                                                                         ->orderBY('Zone_pro', 'ASC')
                                                                         ->get();
                                                                 @endphp
                                                                 <select
-                                                                    class="form-control form-control-sm textSize-13 houseZone2"
-                                                                    name="Region2" id="Region2" required>
+                                                                    class="form-control form-control-sm textSize-13 houseZone"
+                                                                    name="Region" id="Region" required>
                                                                     <option value="">--- ภูมิภาค ---</option>
                                                                     @foreach ($dataZone as $key => $Zone)
                                                                         <option value="{{ $Zone->Zone_pro }}"
@@ -696,15 +1237,18 @@
                                                             </p>
                                                             <div class="col-sm-7">
                                                                 @php
-                                                                    $Province = \App\Models\TB_Provinces::where('Zone_pro', @$data->Region)
+                                                                    $Province = \App\Models\TB_Provinces::where(
+                                                                        'Zone_pro',
+                                                                        @$data->Region,
+                                                                    )
                                                                         ->selectRaw('Province_pro, count(*) as total')
                                                                         ->groupBy('Province_pro')
                                                                         ->orderBY('Province_pro', 'ASC')
                                                                         ->get();
                                                                 @endphp
                                                                 <select
-                                                                    class="form-control form-control-sm textSize-13 houseProvince2"
-                                                                    name="Province2" required>
+                                                                    class="form-control form-control-sm textSize-13 houseProvince"
+                                                                    name="Province" required>
                                                                     <option value="" selected>--- จังหวัด ---
                                                                     </option>
                                                                     @foreach ($Province as $key => $value)
@@ -721,15 +1265,18 @@
                                                             <p class="col-sm-4 col-form-label text-right">อำเภอ : </p>
                                                             <div class="col-sm-7">
                                                                 @php
-                                                                    $District = \App\Models\TB_Provinces::where('Province_pro', @$data->Province)
+                                                                    $District = \App\Models\TB_Provinces::where(
+                                                                        'Province_pro',
+                                                                        @$data->Province,
+                                                                    )
                                                                         ->selectRaw('District_pro, count(*) as total')
                                                                         ->groupBy('District_pro')
                                                                         ->orderBY('District_pro', 'ASC')
                                                                         ->get();
                                                                 @endphp
                                                                 <select
-                                                                    class="form-control form-control-sm textSize-13 houseDistrict2"
-                                                                    name="District2" required>
+                                                                    class="form-control form-control-sm textSize-13 houseDistrict"
+                                                                    name="District" required>
                                                                     <option value="" selected>--- อำเภอ ---
                                                                     </option>
                                                                     @foreach ($District as $key => $value)
@@ -746,15 +1293,18 @@
                                                             <p class="col-sm-4 col-form-label text-right">ตำบล : </p>
                                                             <div class="col-sm-7">
                                                                 @php
-                                                                    $Tambon = \App\Models\TB_Provinces::where('District_pro', @$data->District)
+                                                                    $Tambon = \App\Models\TB_Provinces::where(
+                                                                        'District_pro',
+                                                                        @$data->District,
+                                                                    )
                                                                         ->selectRaw('Tambon_pro, count(*) as total')
                                                                         ->groupBy('Tambon_pro')
                                                                         ->orderBY('Tambon_pro', 'ASC')
                                                                         ->get();
                                                                 @endphp
                                                                 <select
-                                                                    class="form-control form-control-sm textSize-13 houseTambon2"
-                                                                    name="Tumbon2" required>
+                                                                    class="form-control form-control-sm textSize-13 houseTambon"
+                                                                    name="Tumbon" required>
                                                                     <option value="" selected>--- ตำบล ---
                                                                     </option>
                                                                     @foreach ($Tambon as $key => $value)
@@ -771,10 +1321,267 @@
                                                             <p class="col-sm-4 col-form-label text-right">เลขไปรษณีย์ :
                                                             </p>
                                                             <div class="col-sm-7">
-                                                                <input type="number" name="Postcode2"
+                                                                <input type="number" name="Postcode"
                                                                     value="{{ @$data->Postcode }}"
-                                                                    class="form-control form-control-sm textSize-13 Postal2"
+                                                                    class="form-control form-control-sm textSize-13 Postal"
                                                                     placeholder="เลขไปรษณีย์" required />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <div class="form-group">
+                                                                <label for="PhoneNum1">เบอร์โทร 1 :</label>
+                                                                <input type="text" name="PhoneNum1" id="PhoneNum1"
+                                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                                    value="{{ @$item->PhoneNum1 }}"
+                                                                    data-inputmask="'mask': '999-9999999'" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="form-group">
+                                                                <label for="PhoneNum2">เบอร์โทร 2 :</label>
+                                                                <input type="text" name="PhoneNum2" id="PhoneNum2"
+                                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                                    value="{{ @$item->PhoneNum2 }}"
+                                                                    data-inputmask="'mask': '999-9999999'" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="form-group">
+                                                                <label for="PhoneNum3">เบอร์โทร 3 :</label>
+                                                                <input type="text" name="PhoneNum3" id="PhoneNum3"
+                                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                                    value="{{ @$item->PhoneNum3 }}"
+                                                                    data-inputmask="'mask': '999-9999999'" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-9">
+                                                        <span class=" fw-semibold text-primary mt-2"><i
+                                                                class="fa-solid fa-location-dot"></i>
+                                                            ที่อยู่ที่ทำงาน :</span>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
+                                                            <p class="col-sm-4 col-form-label text-right text-red">
+                                                                ชื่อที่ทำงาน : </p>
+                                                            <div class="col-sm-7">
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm textSize-13"
+                                                                    placeholder="ชื่อที่ทำการ" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
+                                                            <p
+                                                                class="col-sm-4 col-form-label text-right d-none d-sm-block text-red">
+                                                                บ้านเลขที่ / หมู่ : </p>
+                                                            <div class="col-12 col-sm-7">
+                                                                <div class="row">
+                                                                    <div class="col-6 pr-0">
+                                                                        <p
+                                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right text-red">
+                                                                            บ้านเลขที่ :</p>
+                                                                        <input type="text" name="HouseNumber"
+                                                                            value="{{ @$data->HouseNumber }}"
+                                                                            class="form-control form-control-sm textSize-13"
+                                                                            placeholder = "บ้านเลขที่" required />
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <p
+                                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right">
+                                                                            หมู่ :</p>
+                                                                        <input type="text" name="Moo"
+                                                                            value="{{ @$data->Moo }}"
+                                                                            class="form-control form-control-sm textSize-13"
+                                                                            placeholder = "หมู่" required />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
+                                                            <p
+                                                                class="col-sm-4 col-form-label text-right d-none d-sm-block text-red">
+                                                                ถนน / ซอย : </p>
+                                                            <div class="col-12 col-sm-7">
+                                                                <div class="row">
+                                                                    <div class="col-6 pr-0">
+                                                                        <p
+                                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right text-red">
+                                                                            ถนน :</p>
+                                                                        <input type="text" name="Road"
+                                                                            {{-- value="{{ @$data->HouseNumber }}" --}}
+                                                                            class="form-control form-control-sm textSize-13"
+                                                                            placeholder = "ถนน" required />
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <p
+                                                                            class="col-12 d-sm-none col-form-label col-form-label-sm textSize-13 text-right">
+                                                                            ตรอก / ซอย :</p>
+                                                                        <input type="text" name="Soi"
+                                                                            {{-- value="{{ @$data->Moo }}" --}}
+                                                                            class="form-control form-control-sm textSize-13"
+                                                                            placeholder = "ตรอก / ซอย" required />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
+                                                            <p class="col-sm-4 col-form-label text-right">ภูมิภาค :
+                                                            </p>
+                                                            <div class="col-sm-7">
+                                                                @php
+                                                                    $dataZone = \App\Models\TB_Provinces::selectRaw(
+                                                                        'Zone_pro, count(*) as total',
+                                                                    )
+                                                                        ->groupBy('Zone_pro')
+                                                                        ->orderBY('Zone_pro', 'ASC')
+                                                                        ->get();
+                                                                @endphp
+                                                                <select
+                                                                    class="form-control form-control-sm textSize-13 houseZone"
+                                                                    name="Region" id="Region" required>
+                                                                    <option value="">--- ภูมิภาค ---</option>
+                                                                    @foreach ($dataZone as $key => $Zone)
+                                                                        <option value="{{ $Zone->Zone_pro }}"
+                                                                            {{ $Zone->Zone_pro == @$data->Region ? 'selected' : '' }}>
+                                                                            {{ $Zone->Zone_pro }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
+                                                            <p class="col-sm-4 col-form-label text-right">จังหวัด :
+                                                            </p>
+                                                            <div class="col-sm-7">
+                                                                @php
+                                                                    $Province = \App\Models\TB_Provinces::where(
+                                                                        'Zone_pro',
+                                                                        @$data->Region,
+                                                                    )
+                                                                        ->selectRaw('Province_pro, count(*) as total')
+                                                                        ->groupBy('Province_pro')
+                                                                        ->orderBY('Province_pro', 'ASC')
+                                                                        ->get();
+                                                                @endphp
+                                                                <select
+                                                                    class="form-control form-control-sm textSize-13 houseProvince"
+                                                                    name="Province" required>
+                                                                    <option value="" selected>--- จังหวัด ---
+                                                                    </option>
+                                                                    @foreach ($Province as $key => $value)
+                                                                        <option value="{{ $value->Province_pro }}"
+                                                                            {{ $value->Province_pro == @$data->Province ? 'selected' : '' }}>
+                                                                            {{ $value->Province_pro }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
+                                                            <p class="col-sm-4 col-form-label text-right">อำเภอ : </p>
+                                                            <div class="col-sm-7">
+                                                                @php
+                                                                    $District = \App\Models\TB_Provinces::where(
+                                                                        'Province_pro',
+                                                                        @$data->Province,
+                                                                    )
+                                                                        ->selectRaw('District_pro, count(*) as total')
+                                                                        ->groupBy('District_pro')
+                                                                        ->orderBY('District_pro', 'ASC')
+                                                                        ->get();
+                                                                @endphp
+                                                                <select
+                                                                    class="form-control form-control-sm textSize-13 houseDistrict"
+                                                                    name="District" required>
+                                                                    <option value="" selected>--- อำเภอ ---
+                                                                    </option>
+                                                                    @foreach ($District as $key => $value)
+                                                                        <option value="{{ $value->District_pro }}"
+                                                                            {{ $value->District_pro == @$data->District ? 'selected' : '' }}>
+                                                                            {{ $value->District_pro }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
+                                                            <p class="col-sm-4 col-form-label text-right">ตำบล : </p>
+                                                            <div class="col-sm-7">
+                                                                @php
+                                                                    $Tambon = \App\Models\TB_Provinces::where(
+                                                                        'District_pro',
+                                                                        @$data->District,
+                                                                    )
+                                                                        ->selectRaw('Tambon_pro, count(*) as total')
+                                                                        ->groupBy('Tambon_pro')
+                                                                        ->orderBY('Tambon_pro', 'ASC')
+                                                                        ->get();
+                                                                @endphp
+                                                                <select
+                                                                    class="form-control form-control-sm textSize-13 houseTambon"
+                                                                    name="Tumbon" required>
+                                                                    <option value="" selected>--- ตำบล ---
+                                                                    </option>
+                                                                    @foreach ($Tambon as $key => $value)
+                                                                        <option value="{{ $value->Tambon_pro }}"
+                                                                            {{ $value->Tambon_pro == @$data->Tumbon ? 'selected' : '' }}>
+                                                                            {{ $value->Tambon_pro }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-lg-6">
+                                                        <div class="form-group row mb-0">
+                                                            <p class="col-sm-4 col-form-label text-right">เลขไปรษณีย์ :
+                                                            </p>
+                                                            <div class="col-sm-7">
+                                                                <input type="number" name="Postcode"
+                                                                    value="{{ @$data->Postcode }}"
+                                                                    class="form-control form-control-sm textSize-13 Postal"
+                                                                    placeholder="เลขไปรษณีย์" required />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <div class="form-group">
+                                                                <label for="PhoneNum1">เบอร์โทร 1 :</label>
+                                                                <input type="text" name="PhoneNum1" id="PhoneNum1"
+                                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                                    value="{{ @$item->PhoneNum1 }}"
+                                                                    data-inputmask="'mask': '999-9999999'" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="form-group">
+                                                                <label for="PhoneNum2">เบอร์โทร 2 :</label>
+                                                                <input type="text" name="PhoneNum2" id="PhoneNum2"
+                                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                                    value="{{ @$item->PhoneNum2 }}"
+                                                                    data-inputmask="'mask': '999-9999999'" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="form-group">
+                                                                <label for="PhoneNum3">เบอร์โทร 3 :</label>
+                                                                <input type="text" name="PhoneNum3" id="PhoneNum3"
+                                                                    class="form-control input-mask form-control-sm textSize-13"
+                                                                    value="{{ @$item->PhoneNum3 }}"
+                                                                    data-inputmask="'mask': '999-9999999'" required>
                                                             </div>
                                                         </div>
                                                     </div>

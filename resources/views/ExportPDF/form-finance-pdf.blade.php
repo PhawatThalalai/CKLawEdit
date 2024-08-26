@@ -13,7 +13,7 @@
         <tr>
             <th style="text-align: left;"><h2>เลขที่สัญญา {{$customer->CON_NO}}</h2></th>
             <th></th>
-            <th style="text-align: right;"><h2>ใบขอนุมัติเลขที่ {{$data->bil_no}}</h2></th>
+            <th style="text-align: right;"><h2>ใบขออนุมัติเลขที่ {{$data->bil_no}}</h2></th>
         </tr>
         <tr>
             <br>

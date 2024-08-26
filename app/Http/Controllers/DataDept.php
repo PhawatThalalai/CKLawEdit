@@ -20,21 +20,19 @@ class DataDept extends Controller
 {
     public function index(Request $request)
     {
-
         // if ($request->type == 'Datacourt') { // View ชั้นศาล
 
         //     // $data = Tribunal_debt::where('id', $id);
 
         //     return view('DataLawsuit.section-court.view');
         // }
-        $data = DB::table('LawCom')
-        ->where('status_com', 'Y')
-        ->where('status_close', 'N')
-        ->whereNot('status','close')
-        ->get();
-       
-        return view('DataDept.view-dept', compact('data'));
-     
+        // $data = DB::table('LawCom')
+        //     ->where('status_com', 'Y')
+        //     ->where('status_close', 'N')
+        //     ->whereNot('status', 'close')
+        //     ->get();
+
+        // return view('DataDept.view-dept', compact('data'));
     }
 
     public function create()
@@ -46,7 +44,7 @@ class DataDept extends Controller
     {
         //
 
-        
+
     }
 
 
@@ -77,4 +75,5 @@ class DataDept extends Controller
     {
         //
     }
+    
 }

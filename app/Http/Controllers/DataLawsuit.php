@@ -32,12 +32,12 @@ class DataLawsuit extends Controller
 
 
         $type = $request->type;
-        if($request->type_time == NULL){
+        if ($request->type_time == NULL) {
             $type_time = 'date_tribunal';
-        }else{
+        } else {
             $type_time = $request->type_time;
         }
-        
+
 
         if ($request->dateStart == NULL && $request->dateEnd == NULL) {
             $dateStart = date('Y-m-d', strtotime('first day of january this year'));
@@ -52,12 +52,12 @@ class DataLawsuit extends Controller
         // dd( $dateStart, $dateEnd);
 
         $dataCount = DB::table('LawCus')
-        ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
-            return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
-        })
-        ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
-            return $query->whereBetween('date_witness', [$dateStart, $dateEnd]);
-        })
+            ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
+                return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
+            })
+            ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
+                return $query->whereBetween('date_witness', [$dateStart, $dateEnd]);
+            })
             ->where('status_exe', 'N')
             ->where('status_close', 'N')
             ->where('withdraw', NULL)
@@ -92,7 +92,7 @@ class DataLawsuit extends Controller
 
         $dataCount3 =
             DB::table('LawCus')
-            ->when($type_time== 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
+            ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
                 return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
             })
             ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
@@ -122,7 +122,7 @@ class DataLawsuit extends Controller
         $count3 = count($dataCount3);
 
         $count5 = count($dataCount5);
-       
+
         // dd($request->type);
         if ($request->type == 'index') {
             return view('DataCustomer.view');
@@ -131,12 +131,12 @@ class DataLawsuit extends Controller
             // dd($request->dateStart, $request->dateEnd);
 
             $data = DB::table('LawCus')
-            ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
-                return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
-            })
-            ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
-                return $query->whereBetween('date_witness', [$dateStart, $dateEnd]);
-            })
+                ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
+                    return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
+                })
+                ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
+                    return $query->whereBetween('date_witness', [$dateStart, $dateEnd]);
+                })
                 ->where('status_exe', 'N')
                 ->where('withdraw', NULL)
                 ->whereNot('status_close', 'Y')
@@ -144,12 +144,12 @@ class DataLawsuit extends Controller
                 ->get();
         } elseif ($request->type == 'DataCourt1') {
             $data = DB::table('LawCus')
-            ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
-                return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
-            })
-            ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
-                return $query->whereBetween('date_witness', [$dateStart, $dateEnd]);
-            })
+                ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
+                    return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
+                })
+                ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
+                    return $query->whereBetween('date_witness', [$dateStart, $dateEnd]);
+                })
                 ->where('status_exe', 'N')
                 ->where('withdraw', NULL)
                 ->whereNot('status_close', 'Y')
@@ -157,12 +157,12 @@ class DataLawsuit extends Controller
                 ->get();
         } elseif ($request->type == 'DataCourt2') {
             $data = DB::table('LawCus')
-            ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
-                return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
-            })
-            ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
-                return $query->whereBetween('date_witness', [$dateStart, $dateEnd]);
-            })
+                ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
+                    return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
+                })
+                ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
+                    return $query->whereBetween('date_witness', [$dateStart, $dateEnd]);
+                })
                 ->where('status_exe', 'N')
                 ->where('withdraw', NULL)
                 ->whereNot('status_close', 'Y')
@@ -170,12 +170,12 @@ class DataLawsuit extends Controller
                 ->get();
         } elseif ($request->type == 'DataCourt3') {
             $data = DB::table('LawCus')
-            ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
-                return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
-            })
-            ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
-                return $query->whereBetween('date_witness', [$dateStart, $dateEnd]);
-            })
+                ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
+                    return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
+                })
+                ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
+                    return $query->whereBetween('date_witness', [$dateStart, $dateEnd]);
+                })
                 ->where('status_exe', 'N')
                 ->where('withdraw', NULL)
                 ->whereNot('status_close', 'Y')
@@ -183,12 +183,12 @@ class DataLawsuit extends Controller
                 ->get();
         } elseif ($request->type == 'DataCourt4') {
             $data = DB::table('LawCus')
-            ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
-                return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
-            })
-            ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
-                return $query->whereBetween('date_witness', [$dateStart, $dateEnd]);
-            })
+                ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
+                    return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
+                })
+                ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
+                    return $query->whereBetween('date_witness', [$dateStart, $dateEnd]);
+                })
 
                 ->where('status_exe', 'N')
                 ->where('withdraw', NULL)
@@ -197,12 +197,12 @@ class DataLawsuit extends Controller
                 ->get();
         } elseif ($request->type == 'DataCourt5') {
             $data = DB::table('LawCus')
-            ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
-                return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
-            })
-            ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
-                return $query->whereBetween('date_witness', [$dateStart, $dateEnd]);
-            })
+                ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
+                    return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
+                })
+                ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
+                    return $query->whereBetween('date_witness', [$dateStart, $dateEnd]);
+                })
                 ->where('status_exe', 'N')
                 ->where('withdraw', NULL)
                 ->whereNot('status_close', 'Y')
@@ -210,12 +210,12 @@ class DataLawsuit extends Controller
                 ->get();
         } elseif ($request->type == 'DataCourt6') {
             $data = DB::table('LawCus')
-            ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
-                return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
-            })
-            ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
-                return $query->whereBetween('date_witness', [$dateStart, $dateEnd]);
-            })
+                ->when($type_time == 'date_tribunal', function ($query) use ($dateStart, $dateEnd) {
+                    return $query->whereBetween('date_tribunal', [$dateStart, $dateEnd]);
+                })
+                ->when($type_time == 'date_witness', function ($query) use ($dateStart, $dateEnd) {
+                    return $query->whereBetween('date_witness', [$dateStart, $dateEnd]);
+                })
                 ->where('status_exe', 'N')
                 ->where('withdraw', NULL)
                 ->whereNot('status_close', 'Y')
@@ -223,7 +223,7 @@ class DataLawsuit extends Controller
                 ->get();
         }
         $dataGuarantor = Guarantor::get();
-        return view('DataLawsuit.section-court.view-court', compact('data', 'type', 'countAll', 'count1', 'count2', 'count3', 'count5', 'dataGuarantor', 'dateStart', 'dateEnd','type_time'));
+        return view('DataLawsuit.section-court.view-court', compact('data', 'type', 'countAll', 'count1', 'count2', 'count3', 'count5', 'dataGuarantor', 'dateStart', 'dateEnd', 'type_time'));
         // return view('DataCustomer.section-cus.view-cus', compact('data'));
 
 
@@ -332,7 +332,7 @@ class DataLawsuit extends Controller
         if (@$request->type == 'statusClose') {
 
             $data = Customer::where('id', $id)->first();
-            
+
             return view('DataLawsuit.section-court.close-status', compact('data'));
         }
     }
@@ -340,7 +340,18 @@ class DataLawsuit extends Controller
 
     public function edit(Request $request, $id)
     {
-        //
+        if ($request->type == 'Edit-sue') {
+            return view('DataLawsuit.section-court.edit-sue');
+        }
+        if ($request->type == 'Edit-witness') {
+            return view('DataLawsuit.section-court.edit-witness');
+        }
+        if ($request->type == 'Edit-submit') {
+            return view('DataLawsuit.section-court.edit-submit');
+        }
+        if ($request->type == 'Edit-appoff') {
+            return view('DataLawsuit.section-court.edit-appoff');
+        }
     }
 
 
@@ -934,11 +945,11 @@ class DataLawsuit extends Controller
     public function import(Request $request)
     {
         // $import = new importDataLaw;
-        
+
         // $testExcel = Excel::import(new importDataLaw, $request->file('file'));
         $testExcel = Excel::toCollection(new importDataLaw, $request->file('file'));
         //หาวิธีทำให้เป็นชั้นเดียว
-        
+
         $array = [];
         // foreach($testExcel[0] as $item){
         //     dump($item['con_no']);
@@ -946,11 +957,11 @@ class DataLawsuit extends Controller
         //         'CON_NO' => $item['con_no'],
         //     ];
         // }
-        
-        for($i = 1 ; $i<count($testExcel[0]) ; $i++){
+
+        for ($i = 1; $i < count($testExcel[0]); $i++) {
             // dump($testExcel[0][$i][0]);
 
-            $array[]=[
+            $array[] = [
                 'CON_NO' => $testExcel[0][$i][0],
                 'prefix' => $testExcel[0][$i][1],
                 'name' => $testExcel[0][$i][2],
@@ -980,79 +991,87 @@ class DataLawsuit extends Controller
                 'หมายเหตุออกหมายตั้ง' => $testExcel[0][$i][26],
             ];
         }
-        
-        foreach( $array as $item){
-                $datacus = new Customer;
-                $datacus->CON_NO = $item['CON_NO'];
-                $datacus->prefix = $item['prefix'];
-                $datacus->name = $item['name'];
-                $datacus->surname = $item['surname'];
-                $datacus->ID_num = $item['ID_num'];
-                $datacus->PhoneNum = $item['PhoneNum'];
-                $datacus->plaintiff = $item['plaintiff'];
-                $datacus->status_tribunal = $item['status_tribunal'];
-                $datacus->status_com = $item['status_com'];
-                $datacus->status_exe = $item['status_exe'];
-                $datacus->status_close = $item['status_close'];
-                $datacus->save();
-            
-                $tri_status = new Tribunal_status;
-                if($item['สถานะ'] == 'ขั้นฟ้อง'){
-                    $tri_status->status_1 ='Y';
-                }
-                else if ($item['สถานะ'] == 'ขั้นสืบพยาน'){
-                    $tri_status->status_1 ='Y';
-                    $tri_status->status_2 ='Y';
-                }
-                else if ($item['สถานะ'] == 'ขั้นส่งคำบังคับ'){
-                    $tri_status->status_1 ='Y';
-                    $tri_status->status_2 ='Y';
-                    $tri_status->status_3 ='Y';
-                }
-                else if ($item['สถานะ'] == 'ขั้นตั้งเจ้าพนักงาน'){
-                    $tri_status->status_1 ='Y';
-                    $tri_status->status_2 ='Y';
-                    $tri_status->status_3 ='Y';
-                    $tri_status->status_4 ='Y';
-                }
-                else if ($item['สถานะ'] == 'ขั้นส่งบังคับคดี'){
-                    $tri_status->status_1 ='Y';
-                    $tri_status->status_2 ='Y';
-                    $tri_status->status_3 ='Y';
-                    $tri_status->status_4 ='Y';
-                    $tri_status->class_execution ='Y';
-                }
-                $tri_status->cus_id = $datacus->id;
-                $tri_status->save();
 
-                $tri_debt = new Tribunal_debt;
-                $tri_debt->cus_id = $datacus->id;
-                $tri_debt->tribunal =$item['ศาล'];
-                $tri_debt->case_type =$item['ประเภทคดี'];
-                $tri_debt->black_no =$item['เลขคดีดำ'];
-                $tri_debt->red_no =$item['เลขคดีแดง'];
-                $tri_debt->capital_sue =$item['ทุนทรัพย์ฟ้อง'];
-                $tri_debt->date_tribunal = $item['วันที่ฟ้อง'];
-                $tri_debt->date_witness = $item['วันที่สืบพยาน'];
-                $tri_debt->debt_balance = $item['ยอดหนี้'];
-                $tri_debt->date_postponed = $item['วันเลื่อน'];
-                $tri_debt->witness_status = $item['สถานะสืบพยาน'];
-                $tri_debt->witness_note = $item['หมายเหตุสืบพยาน'];
-                $tri_debt->sub_date = $item['วันที่ส่งคำบังคับ'];
-                $tri_debt->command_note = $item['หมายเหตุส่งคำบังคับ'];
-                $tri_debt->date_app = $item['วันออกหมายตั้ง'];
-                $tri_debt->app_note = $item['หมายเหตุออกหมายตั้ง'];
-                $tri_debt->status = $item['สถานะ'];
-                $tri_debt->save();
-                
+        foreach ($array as $item) {
+            $datacus = new Customer;
+            $datacus->CON_NO = $item['CON_NO'];
+            $datacus->prefix = $item['prefix'];
+            $datacus->name = $item['name'];
+            $datacus->surname = $item['surname'];
+            $datacus->ID_num = $item['ID_num'];
+            $datacus->PhoneNum = $item['PhoneNum'];
+            $datacus->plaintiff = $item['plaintiff'];
+            $datacus->status_tribunal = $item['status_tribunal'];
+            $datacus->status_com = $item['status_com'];
+            $datacus->status_exe = $item['status_exe'];
+            $datacus->status_close = $item['status_close'];
+            $datacus->save();
 
+            $tri_status = new Tribunal_status;
+            if ($item['สถานะ'] == 'ขั้นฟ้อง') {
+                $tri_status->status_1 = 'Y';
+            } else if ($item['สถานะ'] == 'ขั้นสืบพยาน') {
+                $tri_status->status_1 = 'Y';
+                $tri_status->status_2 = 'Y';
+            } else if ($item['สถานะ'] == 'ขั้นส่งคำบังคับ') {
+                $tri_status->status_1 = 'Y';
+                $tri_status->status_2 = 'Y';
+                $tri_status->status_3 = 'Y';
+            } else if ($item['สถานะ'] == 'ขั้นตั้งเจ้าพนักงาน') {
+                $tri_status->status_1 = 'Y';
+                $tri_status->status_2 = 'Y';
+                $tri_status->status_3 = 'Y';
+                $tri_status->status_4 = 'Y';
+            } else if ($item['สถานะ'] == 'ขั้นส่งบังคับคดี') {
+                $tri_status->status_1 = 'Y';
+                $tri_status->status_2 = 'Y';
+                $tri_status->status_3 = 'Y';
+                $tri_status->status_4 = 'Y';
+                $tri_status->class_execution = 'Y';
+            }
+            $tri_status->cus_id = $datacus->id;
+            $tri_status->save();
+
+            $tri_debt = new Tribunal_debt;
+            $tri_debt->cus_id = $datacus->id;
+            $tri_debt->tribunal = $item['ศาล'];
+            $tri_debt->case_type = $item['ประเภทคดี'];
+            $tri_debt->black_no = $item['เลขคดีดำ'];
+            $tri_debt->red_no = $item['เลขคดีแดง'];
+            $tri_debt->capital_sue = $item['ทุนทรัพย์ฟ้อง'];
+            $tri_debt->date_tribunal = $item['วันที่ฟ้อง'];
+            $tri_debt->date_witness = $item['วันที่สืบพยาน'];
+            $tri_debt->debt_balance = $item['ยอดหนี้'];
+            $tri_debt->date_postponed = $item['วันเลื่อน'];
+            $tri_debt->witness_status = $item['สถานะสืบพยาน'];
+            $tri_debt->witness_note = $item['หมายเหตุสืบพยาน'];
+            $tri_debt->sub_date = $item['วันที่ส่งคำบังคับ'];
+            $tri_debt->command_note = $item['หมายเหตุส่งคำบังคับ'];
+            $tri_debt->date_app = $item['วันออกหมายตั้ง'];
+            $tri_debt->app_note = $item['หมายเหตุออกหมายตั้ง'];
+            $tri_debt->status = $item['สถานะ'];
+            $tri_debt->save();
         }
-
-
     }
 
     public function destroy($id)
     {
         //
+    }
+    public function showWitness()
+    {
+        return view('DataLawsuit.section-court.view-witness');
+    }
+    public function showSue()
+    {
+        return view('DataLawsuit.section-court.view-sue');
+    }
+    public function showSubmit()
+    {
+        return view('DataLawsuit.section-court.view-submit');
+    }
+    public function showAppoff()
+    {
+        return view('DataLawsuit.section-court.view-appoff');
     }
 }

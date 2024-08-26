@@ -2,38 +2,24 @@
 @section('content')
 @section('DataCus', 'active')
 
-<div class="row g-1">
+<div class="row">
 
     {{-- header content --}}
-    <div class="row mb-2 g-1">
-        <div class="col-9">
+    <div class="row mb-2">
+        <div class="col-10">
             <h5 class=" fw-semibold text-primary"><i class="fa-solid fa-address-book"></i> ฐานข้อมูลลูกหนี้
             </h5>
         </div>
-
-        <div class="col-sm-3">
-            <div class="text-sm-end">
-
-                <a data-link="{{ route('Cus.create') }}?type={{ 'Createcus' }}" data-bs-toggle="modal"
-                    data-bs-target="#modal-xl" type="button"
-                    class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2">
-                    <i class="mdi mdi-plus me-1"></i> เพิ่มลูกหนี้
-                </a>
-                {{-- <a data-link="{{ route('Cus.create') }}?type={{ 'ExportExcel' }}" data-bs-toggle="modal"
-                    data-bs-target="#modal-xl" type="button"
-                    class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2">
-                    <i class="fa-solid fa-download"></i> Export
-                </a> --}}
-
-              
-            </div>
+        <div class="col-2 text-end">
+            <a data-link="{{ route('Cus.create') }}?type={{ 'Createcus' }}" data-bs-toggle="modal"
+                data-bs-target="#modal-xl" type="button"
+                class="btn btn-success btn-rounded waves-effect waves-light mb-2 btn-sm">
+                <div class="d-flex">
+                    <div class="d-none d-lg-block mdi mdi-plus">เพิ่มลูกหนี้</div>
+                    <div><i class="fa fa-plus d-lg-none"></i></div>
+                </div>
+            </a>
         </div>
-        {{-- <div class="col-3 text-end">
-            <button type="button" data-bs-toggle="modal" data-bs-target="#modal-xl" data-link="" class="btn btn-warning btn-sm">สอบถาม <i class="fa-solid fa-magnifying-glass"></i></button>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#modal-lg" data-link="{{ route('Cus.create') }}?type={{'importDataCus'}}" class="btn btn-primary btn-sm">นำเข้า <i class="fa-solid fa-file-arrow-down"></i></button>
-            <button type="button" class="btn btn-danger btn-sm">ลบ <i class="fa-solid fa-trash-can"></i></button>
-
-        </div> --}}
     </div>
 
 
@@ -88,18 +74,24 @@
                             class="table dailytable table-hover Custable nowrap dataTable no-footer dtr-inline">
                             <thead>
                                 <tr role="row">
+                                    <th style="text-align: center;">ปีที่ฟ้อง</th>
                                     <th style="text-align: center;">เลขที่สัญญา</th>
-                                    <th style="text-align: center;">ชื่อ-สกุล</th>
+                                    <th style="text-align: center;">จำเลย</th>
+                                    <th style="text-align: center;">หมายเลขคดี</th>
+                                    <th style="text-align: center;">หน่วยงาน</th>
+                                    <th style="text-align: center;">ประเภทคดี</th>
+                                    <th style="text-align: center;">รายงานศาล</th>
                                     {{-- <th style="text-align: center;">ประเภทคดี</th> --}}
                                     <th style="text-align: center;">สถานะ</th>
                                     {{-- <th style="text-align: center;">ยอดเบิกทั้งหมด</th> --}}
-                                    <th style="text-align: center;">ดูรายละเอียด</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($data as $key => $item)
-                                    <tr>
-
+                                    <tr data-href="{{ route('Cus.show', $item->id) }}?type={{ 'showDetail' }}">
+                                        <td style="text-align: center;">
+                                            {{ @$item->CusToTri->date_tribunal ? \Carbon\Carbon::parse($item->CusToTri->date_tribunal)->year + 543 : '' }}
+                                        </td>
                                         <td style="text-align: center;">{{ $item->CON_NO }}</td>
                                         <td style="text-align: center;">{{ $item->name }} {{ $item->surname }}
                                             @foreach ($dataGuarantor as $key => $guarantor)
@@ -108,9 +100,23 @@
                                                 @endif
                                             @endforeach
                                         </td>
-                                        {{-- <td style="text-align: center;">ฟ้อง{{ $item->case_type }}</td> --}}
-                                        @if($item->status_close == 'Y')
-                                        <td style="text-align: center;"> ปิดบัญชี </td>
+                                        <td style="text-align: center;">
+                                            <p>{{ @$item->black_no }}</p>
+                                            <p class="text-danger">{{ @$item->red_no }}</p>
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            ศาลจังหวัด {{ @$item->CusToTri->tribunal }}
+
+                                        </td>
+                                        <td style="text-align: center;">
+                                            {{ @$item->case_type }}
+                                        </td>
+                                        <td style="text-align: center;">
+                                            {{ @$item->CusToTri->witness_status }}
+                                        </td>
+                                        @if ($item->status_close == 'Y')
+                                            <td style="text-align: center;"> ปิดบัญชี </td>
                                         @elseif ($item->status_tribunal == 'N')
                                             <td style="text-align: center;"> ลูกค้ารอส่งชั้นศาล </td>
                                         @elseif ($item->status_tribunal == 'Y' && $item->status_com == 'N' && $item->status_exe == 'N')
@@ -121,14 +127,6 @@
                                             <td style="text-align: center;"> ลูกค้าประนอมหนี้ </td>
                                         @endif
 
-                                        {{-- <td style="text-align: center;">{{ number_format(@$item->CusToFinance->totalsum,2) }}</td> --}}
-                                        <td style="text-align: center;">
-                                            <a href="{{ route('Cus.show', $item->id) }}?type={{ 'showDetail' }}"
-                                                type="button"
-                                                class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2">
-                                                <i class="mdi mdi-plus me-1"></i> ดูรายละเอียด
-                                            </a>
-                                        </td>
 
                                     </tr>
                                 @endforeach
@@ -151,7 +149,7 @@
         // let currentDate = document.getElementById('date-input').valueAsDate = new Date();
         // console.log(currentDate);
 
-       
+
         $('#saveBtn').click(function() {
             let num = 0;
 
@@ -258,6 +256,8 @@
         });
     })
 </script>
+
+
 
 
 

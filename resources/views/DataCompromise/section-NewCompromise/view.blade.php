@@ -66,12 +66,12 @@
 
 
         {{-- left content --}}
-        <div class="col-3">
+        {{-- <div class="col-3">
             @include('DataCustomer.section-contract.Card-Contract')
-        </div>
+        </div> --}}
 
         {{-- right content --}}
-        <div class="col-9">
+        <div class="col-12">
             <div class="row mb-2">
                 <div class="col-12">
                     <div class="card border border-white mb-2 p-2 h-100">
