@@ -2,7 +2,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-6">
-                <h5 class=" fw-semibold text-primary"><i class="fa-solid fa-address-book"></i> ข้อมูลคดี
+                <h5 class=" fw-semibold text-primary"><i class="fa-solid fa-address-book"></i> ข้อมูลบังคับคดี
                 </h5>
             </div>
             <div class="col-12">

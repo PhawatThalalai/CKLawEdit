@@ -235,6 +235,42 @@ class DataLawsuit extends Controller
         }
     }
 
+    // public function showSue($id)
+    // {
+    //     $item = Guarantor::find($id);  // ค้นหาข้อมูลตาม $id
+
+    //     if (!$item) {
+    //         // หากไม่พบข้อมูลที่ต้องการ สามารถจัดการกรณีไม่พบข้อมูลได้ที่นี่
+    //         return redirect()->back()->with('error', 'ไม่พบข้อมูล');
+    //     }
+
+    //     $dataGuarantor = Guarantor::where('cus_id', $id)->get();  // ดึงข้อมูลที่เกี่ยวข้องจากตารางอื่น ๆ หากจำเป็น
+
+    //     return view('DataLawsuit.section-court.data-case', compact('item', 'dataGuarantor'));
+    // }
+
+
+
+
+
+
+
+    // public function showDetail($id)
+    // {
+    //     // ดึงข้อมูลลูกค้าและผู้ค้ำประกันจากฐานข้อมูล
+    //     $item = Customer::find($id);
+    //     $dataGuarantor = Guarantor::where('cus_id', $id)->get();
+
+    //     // ส่งข้อมูลไปยัง Blade view
+    //     return view('DataCustomer.section-contract.view', [
+    //         'item' => $item,
+    //         'dataGuarantor' => $dataGuarantor
+    //     ]);
+    // }
+
+
+
+
     public function create(Request $request)
     {
         //
@@ -1058,14 +1094,32 @@ class DataLawsuit extends Controller
     {
         //
     }
+
+    // public function destroy(LawTrack $lawTrack) //EBM
+    // {
+    //     $lawTrack->delete();
+    //     return redirect()->route('DataLawsuit.section-court.view-witness')->with('success', 'ลบข้อมูลผู้ใช้งานระบบสำเร็จ');
+    // }
+
     public function showWitness()
     {
         return view('DataLawsuit.section-court.view-witness');
     }
+
     public function showSue()
     {
         return view('DataLawsuit.section-court.view-sue');
     }
+
+    // public function showSue()
+    // {
+    //     // ดึงข้อมูลทั้งหมดจากโมเดล Guarantor ...EBM
+    //     $guarantors = Guarantor::all();
+
+    //     // ส่งข้อมูลไปยัง view 'DataLawsuit.section-court.view-sue'
+    //     return view('DataLawsuit.section-court.view-sue', compact('guarantors'));
+    // }
+
     public function showSubmit()
     {
         return view('DataLawsuit.section-court.view-submit');

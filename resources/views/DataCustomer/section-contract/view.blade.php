@@ -2,24 +2,33 @@
 @section('content')
     <div class="row g-1">
 
+        {{-- Edit this page by masiron --}}
         {{-- header content --}}
         <div class="row mb-2">
             <div class="col-6">
-                <h5 class="fw-semibold text-primary"><i class="fa-solid fa-address-book"></i> ฐานข้อมูลลูกหนี้ (Data
-                    Debtor)</h5>
+                <h5 class="fw-semibold text-primary"><i class="fa-solid fa-address-book"></i> ฐานข้อมูลลูกหนี้ (DataDebtor)</h5>
             </div>
             <div class="col-6 text-end d-flex justify-content-end">
                 <a type="button" class="btn btn-warning btn-rounded waves-effect waves-light mb-2 me-2 ">
                     ส่งชั้นฟ้อง <i class="fa-solid fa-arrow-right-long"></i>
                 </a>
-                <a href="{{ route('Law.index') }}?type={{ 'DataCourt1' }}" type="button"
+                {{-- <a href="{{ route('Law.index') }}?type={{ 'DataCourt1' }}" type="button" --}}
+                {{-- <a href="{{ route('showInvest') }}?type={{ 'DataCourt1' }}" type="button" --}}
+                {{-- <a href="{{ route('showSue') }}?type={{ 'DataCourt1' }}" type="button" --}}
+                {{-- <a href="{{ route('showSue', $data->id) }}" type="button"
                     class="btn btn-success btn-rounded waves-effect waves-light mb-2 ">
                     ไปหน้าลูกหนี้ชั้นฟ้อง <i class="fa-solid fa-arrow-right-long"></i>
-                </a>
+                </a> --}}
+
+                <a href="{{ route('showSue', $data->id) }}?type=EditDatacus" type="button"
+                    class="btn btn-success btn-rounded waves-effect waves-light mb-2">
+                    ไปหน้าลูกหนี้ชั้นฟ้อง <i class="fa-solid fa-arrow-right-long"></i>
+                 </a>
+
             </div>
         </div>
         {{-- right content --}}
-        <div class="card border-0 mb-2 p-2">
+        {{-- <div class="card border-0 mb-2 p-2">
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
@@ -42,7 +51,70 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
+
+        <form action="{{ route('Cus.show', $data->id) }}?type=EditDatacus" method="GET">
+            <div class="card border-0 mb-2 p-2">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-sm">
+                                <tr>
+                                    <th class="text-start">เลขที่สัญญา</th>
+                                    <td colspan="4" class="text-start">
+                                        <input type="text" name="CON_NO" id="CON_NO" value="{{ old('CON_NO', $data->CON_NO) }}" class="form-control-plaintext" readonly>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="text-start">โจทย์</th>
+                                    <td class="text-start">
+                                        <input type="text" name="plaintiff" value="{{ old('plaintiff', $data->plaintiff) }}" class="form-control-plaintext" readonly>
+                                    </td>
+                                    {{-- <th class="text-start">จำเลย</th>
+                                    <td id="defendant-info" class="text-start">
+                                        <input type="text" name="defendant" value="{{ old('defendant', $data->defendant) }}" class="form-control-plaintext" readonly>
+                                    </td> --}}
+
+                                    {{-- <th class="text-start">จำเลย</th>
+                                    <td id="defendant-info" class="text-start">นายสมนึก สมมติ<br>นายสมมติ สมนึก</td> --}}
+
+                                    {{-- <th class="text-start">จำเลย</th> --}}
+                                    <td id="defendant-info" class="text-start" value="{{ old('defendant1', $data->defendant1) }}"><br></td>
+
+                                </tr>
+                                {{-- <tr>
+                                    <th class="text-start">สถานะ</th>
+                                    <td colspan="4" class="text-start">
+                                        <input type="text" name="status_close" value="{{ old('status_close', $data->status_close) }}" class="form-control-plaintext" readonly>
+                                    </td>
+                                </tr> --}}
+
+                                <tr>
+                                    <th class="text-start">สถานะ</th>
+                                    <td colspan="4" class="text-start">
+                                        @if ($data->status_close == 'Y')
+                                            <input type="text" name="status_close" value="ปิดบัญชี" class="form-control-plaintext" readonly>
+                                        @elseif ($data->status_tribunal == 'N')
+                                            <input type="text" name="status_close" value="ลูกค้ารอส่งชั้นศาล" class="form-control-plaintext" readonly>
+                                        @elseif ($data->status_tribunal == 'Y' && $data->status_com == 'N' && $data->status_exe == 'N')
+                                            <input type="text" name="status_close" value="ลูกค้าชั้นศาล" class="form-control-plaintext" readonly>
+                                        @elseif ($data->status_tribunal == 'Y' && $data->status_exe == 'Y')
+                                            <input type="text" name="status_close" value="ลูกค้าชั้นบังคับคดี" class="form-control-plaintext" readonly>
+                                        @elseif ($data->status_com == 'Y')
+                                            <input type="text" name="status_close" value="ลูกค้าประนอมหนี้" class="form-control-plaintext" readonly>
+                                        @else
+                                            <input type="text" name="status_close" value="ข้อมูลไม่สมบูรณ์" class="form-control-plaintext" readonly>
+                                        @endif
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
         <div class="col-12">
             <div class="card border-0 mb-1 p-2">
                 <ul class="nav nav-pills row" id="pills-tab" role="tablist">
@@ -79,6 +151,11 @@
             </div>
         </div>
     </div>
+
+
+
+
+
     <script>
         $(document).ready(function() {
             // Inputmask().mask(document.querySelectorAll("input"));
@@ -102,7 +179,7 @@
             $('#PhoneNum').mask('999-9999999');
             $('#ID_numShow').mask('9-9999-99999-99-9');
             $('#PhoneNumShow').mask('999-9999999');
-            
+
             let type = $('#type').val();
             console.log(type);
             // let currentDate = document.getElementById('date-input').valueAsDate = new Date();
@@ -111,19 +188,19 @@
             $('#edit_cus').on('change input', () => {
                 $('#saveEditCusBtn').show()
             })
-    
+
             $('#saveEditCusBtn').click(function(e) {
                 data = {
                     status: ''
                 };
                 console.log('data', data);
-    
+
                 $('#edit_cus').serializeArray().map(function(x) {
                     data[x.name] = x.value;
                 });
-    
-    
-    
+
+
+
                 console.log(data);
                 let id = $('#id').val();
                 console.log(id);
@@ -136,25 +213,25 @@
                 let ID_num = $('#ID_num').val();
                 let Nickname = $('#Nickname').val();
                 let PhoneNum = $('#PhoneNum').val();
-    
-    
+
+
                 let link = `{{ route('Cus.update', 'id') }}?type=${type}`;
                 let url = link.replace('id', id);
                 console.log(url);
                 // if (name != '' && surname != '' && prefix != '' && ID_num != '' && PhoneNum !=
                 //     '') {
-    
+
                 $.ajax({
                     url: url,
                     method: "PUT",
                     data: {
                         _token: "{{ csrf_token() }}",
                         data: data,
-    
+
                     },
-    
+
                     success: function(result) {
-    
+
                         Swal.fire({
                             icon: 'success',
                             title: `SUCCESS `,
@@ -180,9 +257,9 @@
                             text: err.responseJSON.message,
                             showConfirmButton: true,
                         });
-    
+
                         // $('#modal_xl_2').modal('hide');
-    
+
                     }
                 });
                 // } else {
@@ -192,17 +269,17 @@
                 //         text: "โปรดตรวจสอบข้อมูลให้ครบถ้วนก่อนบันทึก. !",
                 //     })
                 // }
-    
+
             });
-    
-    
-    
-    
+
+
+
+
             // $('#date-input').on('change input', () => {
             //     let currentDate = $('#date-input').val();
             //     console.log(currentDate);
             // })
-    
+
         })
     </script> --}}
     <script>

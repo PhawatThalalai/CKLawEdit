@@ -54,24 +54,26 @@
         </div>
         <div class="col-10">
             <div class="text-sm-end">
-                <a class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                <div class="d-flex justify-content-center align-items-center">
+                {{-- <a class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2" id="detect"
                     href="{{ route('showInvest') }}"></i>
                     ข้อมูลสืบทรัพย์/คัดถ่าย
-                </a>
-                <a class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                </a> --}}
+                {{-- <a class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2" id="insert"
                     href="{{ route('showProp') }}"></i>
                     ข้อมูลนำชี้ทรัพย์
                 </a>
-                <a class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                <a class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2" id="resources"
                     href="{{ route('showSeques') }}"></i>
                     ข้อมูลตั้งเรื่องยึดทรัพย์
                 </a>
-                <a class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2"
+                <a class="btn btn-primary btn-rounded waves-effect waves-light mb-2 me-2" id="announce"
                     href="{{ route('showAunction') }}"></i>
                     ข้อมูลประกาศขายทอดตลาด
-                </a>
+                </a> --}}
             </div>
         </div>
+
         {{-- <div class="col-sm-3">
             <div class="text-sm-end">
                 <a data-link="{{ route('Cus.create') }}?type={{ 'Createcus' }}" data-bs-toggle="modal"
@@ -119,7 +121,9 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $key => $item)
-                                        <tr data-href="{{ route('Cus.show', $item->id) }}?type={{ 'showDetail' }}">
+                                        {{-- <tr data-href="{{ route('Cus.show', $item->id) }}?type={{ 'showDetail' }}"> --}}
+
+                                            <tr data-href="{{ route('showInvest', $item->id) }}?type={{ 'showDetail' }}">
                                             <td style="text-align: center;">
                                                 {{ @$item->date_tribunal ? \Carbon\Carbon::parse($item->date_tribunal)->year + 543 : '' }}
                                             </td>

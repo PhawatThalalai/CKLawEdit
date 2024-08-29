@@ -1,3 +1,6 @@
+{{-- Edit By Masiron --}}
+
+
 <div class="col-12">
     <div class="card border border-white mb-1 p-2">
         <ul class="nav nav-pills row" id="pills-tab" role="tablist">
@@ -25,7 +28,7 @@
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-sue" role="tabpanel" aria-labelledby="pills-sue-tab">
             {{-- detail con --}}
-            
+
             @include('DataLawsuit.section-court.card-detail-sue')
         </div>
 
@@ -52,3 +55,39 @@
         </div>
     </div>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // เริ่มต้นด้วยการแสดงปุ่ม 'ข้อมูลลูกหนี้' และซ่อนปุ่มอื่น ๆ
+        $(".btn-primary").show(); // แสดงปุ่ม 'ข้อมูลลูกหนี้'
+        $(".btn-success, .btn-danger, .btn-secondary").hide(); // ซ่อนปุ่มอื่น ๆ
+
+        // เมื่อกดปุ่ม 'ชั้นฟ้อง'
+        $("#pills-sue-tab").click(function() {
+            $(".btn-primary").show(); // แสดงปุ่ม 'ข้อมูลลูกหนี้'
+            $(".btn-success, .btn-danger, .btn-secondary").hide(); // ซ่อนปุ่มอื่น ๆ
+        });
+
+        // เมื่อกดปุ่ม 'ชั้นสืบพยาน'
+        $("#pills-witness-tab").click(function() {
+            $(".btn-primary, .btn-success, .btn-danger").show(); // แสดงปุ่ม 'ข้อมูลลูกหนี้', 'ประนอมหนี้', และ 'ปิดบัญชี'
+            $(".btn-secondary").hide(); // ซ่อนปุ่มอื่น ๆ
+        });
+
+        // เมื่อกดปุ่ม 'ชั้นส่งคำบังคับ'
+        $("#pills-submit-tab").click(function() {
+            $(".btn-primary, .btn-success").show(); // แสดงปุ่ม 'ข้อมูลลูกหนี้', 'ประนอมหนี้'
+            $(".btn-danger, .btn-secondary").hide(); // ซ่อนปุ่มอื่น ๆ
+        });
+
+        // เมื่อกดปุ่ม 'ชั้นตั้งเจ้าพนักงาน'
+        $("#pills-appoff-tab").click(function() {
+            $(".btn-primary, .btn-success, .btn-secondary").show(); // แสดงปุ่ม 'ข้อมูลลูกหนี้', 'ประนอมหนี้', และ 'ข้อมูลชั้นบังคับคดี'
+            $(".btn-danger").hide(); // ซ่อนปุ่มอื่น ๆ
+        });
+    });
+</script>
+

@@ -31,9 +31,9 @@
                     </form>
                 </div>
             </div>
-            <div class="col-3 d-flex">
+            <div class="col-6 d-flex">
                 <div class="d-flex justify-content-end ">
-                    <a class="btn btn-success btn-sm btn-rounded waves-effect waves-light mb-2 me-2 px-2 py-2"
+                    <a class="btn btn-success btn-sm btn-rounded waves-effect waves-light mb-2 me-2 px-2 py-2 "
                         data-bs-toggle="modal" data-bs-target="#modal-md"
                         data-link="{{ route('Exe.create') }}?type={{ 'ExportExcelExe' }}">
                         <i class="fa-solid fa-download"></i> Export

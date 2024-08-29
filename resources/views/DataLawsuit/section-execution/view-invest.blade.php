@@ -11,6 +11,12 @@
                 <a type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2">
                     ข้อมูลคดี <i class="fa-solid fa-arrow-right-long"></i>
                 </a>
+                <a type="button" class="btn btn-warning btn-rounded waves-effect waves-light mb-2 me-2">
+                    ประนอมหนี้ <i class="fa-solid fa-arrow-right-long"></i>
+                </a>
+                <a type="button" class="btn btn-danger btn-rounded waves-effect waves-light mb-2 me-2" id="close">
+                    ปิดบัญชี <i class="fa-solid fa-arrow-right-long"></i>
+                </a>
                 <a type="button" class="btn btn-secondary btn-rounded waves-effect waves-light mb-2 me-2">
                     ส่งสืบทรัพย์ใหม่ <i class="fa-solid fa-arrow-right-long"></i>
                 </a>

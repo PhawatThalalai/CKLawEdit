@@ -9,7 +9,7 @@
                 <table class="table table-md">
                     <tr>
                         <th class="text-start">เลขที่สัญญา :</th>
-                        <td class="text-start" id="CON_NO" name="CON_NO">30-2567/1234</td>
+                        <td class="text-start" id="CON_NO" name="CON_NO">30-2567/1234 </td>
                         <th class="text-start">ประเภทคดี :</th>
                         <td class="text-start ">เช่าซื้อ</td>
                     </tr>
@@ -43,8 +43,19 @@
                         <td colspan="3" class="text-start">{{ @$item->status }}</td>
                     </tr>
 
+
+
                 </table>
+                <!-- resources/views/DataLawsuit/section-court/data-case.blade.php -->
             </div>
+
+
         </div>
     </div>
 </div>
+
+
+{{-- EBM --}}
+{{-- @foreach($guarantors as $guarantor)
+<p>{{ $guarantor->name }}</p> <!-- ตัวอย่างการแสดงชื่อของ Guarantor -->
+@endforeach --}}

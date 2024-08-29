@@ -46,12 +46,12 @@
                     </div>
                 </div>
             </div>
-            <div class="form-check">
+            {{-- <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                     ส่งตั้งเรื่องยึดทรัพย์
                 </label>
-            </div>
+            </div> --}}
             <div class="mb-3 input-bx">
                 <span>หมายเหตุ :</span>
                 <textarea class="form-control"></textarea>
@@ -59,8 +59,18 @@
 
         </div>
     </div>
-    <div class="modal-footer">
+    {{-- <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ปิด</button>
         <button type="button" class="btn btn-primary">บันทึก</button>
+    </div> --}}
+
+    <div class="modal-footer d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-warning"> ส่งข้อมูลตั้งเรื่องยึดทรัพย์</button>
+        </div>
+        <div>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ปิด</button>
+            <button type="button" class="btn btn-primary">บันทึก</button>
+        </div>
     </div>
 </div>

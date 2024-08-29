@@ -52,3 +52,67 @@
         </div>
     </div>
 </div>
+
+
+
+<script>
+    // $(document).ready(function() {
+
+    //     // เริ่มต้นหน้าให้แสดง
+    //     $(".btn-primary, .btn-success, .btn-secondary").show();
+    //     $(".btn-danger, .btn-warning").hide();
+
+    //     $("#pills-invest-tab").click(function() {
+    //         $(".btn-primary, .btn-success, .btn-secondary").show();
+    //         $(".btn-danger").hide();
+    //     });
+
+    //     // เมื่อกดปุ่ม 'ชั้นสืบพยาน'
+    //     $("#pills-prop-tab").click(function() {
+    //         $(".btn-primary, .btn-success, .btn-danger, .btn-secondary").show();
+    //         $(".btn-warning").hide();
+    //     });
+
+    //     // เมื่อกดปุ่ม 'ชั้นส่งคำบังคับ'
+    //     $("#pills-seques-tab").click(function() {
+    //         $(".btn-primary, .btn-success, .btn-danger, .btn-secondary, .btn-warning").show();
+    //         // $(".btn-danger, .btn-secondary").hide();
+    //     });
+
+    //     // เมื่อกดปุ่ม 'ชั้นตั้งเจ้าพนักงาน'
+    //     $("#pills-appoff-tab").click(function() {
+    //         $(".btn-primary, .btn-success, .btn-danger, .btn-secondary, .btn-warning").show();
+    //         // $(".btn-danger").hide();
+    //     });
+    // });
+
+    $(document).ready(function() {
+
+        // เริ่มต้นหน้าให้แสดง
+        $(".btn-primary, .btn-success, .btn-secondary").show();
+        $(".btn-danger, .btn-warning").hide();
+
+        $("#pills-invest-tab").click(function() {
+            $(".btn-primary, .btn-success, .btn-secondary").show();
+            $(".btn-danger, .btn-warning").hide();
+        });
+
+        // เมื่อกดปุ่ม 'ชั้นสืบพยาน'
+        $("#pills-prop-tab").click(function() {
+            $(".btn-primary, .btn-success, .btn-secondary").show();
+            $(".btn-danger").show();
+            $(".btn-warning").hide();
+        });
+
+        // เมื่อกดปุ่ม 'ชั้นส่งคำบังคับ'
+        $("#pills-seques-tab").click(function() {
+            $(".btn-primary, .btn-success, .btn-secondary, .btn-danger, .btn-warning").show();
+        });
+
+        // เมื่อกดปุ่ม 'ชั้นตั้งเจ้าพนักงาน'
+        $("#pills-appoff-tab").click(function() {
+            $(".btn-primary, .btn-success, .btn-secondary, .btn-danger, .btn-warning").show();
+        });
+    });
+
+</script>

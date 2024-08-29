@@ -2,7 +2,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-           <img src="{{ asset('dist/img/leasingLogo1.jpg') }}" style="width:15rem; border-radius:50%" />  
+           <img src="{{ asset('dist/img/leasingLogo1.jpg') }}" style="width:15rem; border-radius:50%" />
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -40,7 +40,7 @@
             </div>
         </form>
     </x-jet-authentication-card>
-</x-guest-layout> 
+</x-guest-layout>
 --}}
 
 
@@ -68,7 +68,7 @@
 
     <link rel="icon" type="image/x-icon" href="{{ asset('dist/img/leasingLogo1.jpg') }}">
     <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
-    
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
@@ -115,7 +115,7 @@
                                         <span class="visually-hidden">Next</span>
                                     </button>
                                 </div>
-                               
+
                             </div>
                             <div class="col-lg-6 ">
                                 <div class="p-5">
@@ -135,7 +135,7 @@
                                             <x-jet-label for="password" value="{{ __('Password') }}" />
                                             <x-jet-input id="password" class="form-control form-control-user" type="password" name="password" required autocomplete="current-password" />
                                         </div>
-                                      
+
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <label for="remember_me" class="">

@@ -76,8 +76,18 @@
 
         </div>
     </div>
-    <div class="modal-footer">
+    {{-- <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ปิด</button>
         <button type="button" class="btn btn-primary">บันทึก</button>
+    </div> --}}
+
+    <div class="modal-footer d-flex justify-content-between">
+        <div>
+            <button type="button" class="btn btn-warning"> ส่งข้อมูลประกาศถ่ายทอดตลาด</button>
+        </div>
+        <div>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ปิด</button>
+            <button type="button" class="btn btn-primary">บันทึก</button>
+        </div>
     </div>
 </div>

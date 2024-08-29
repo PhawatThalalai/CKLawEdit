@@ -7,7 +7,6 @@ use App\Http\Controllers\DataCustomer;
 use App\Http\Controllers\DataContract;
 use App\Http\Controllers\DataLawsuit;
 use App\Http\Controllers\DataCompromise;
-
 use App\Http\Controllers\DataExecution;
 use App\Http\Controllers\DataFinance;
 use App\Http\Controllers\DataLawTrack;
@@ -64,4 +63,12 @@ Route::middleware([
     Route::get('/showProp',[DataExecution::class,'showProp'])->name('showProp');
     Route::get('/showSeques',[DataExecution::class,'showSeques'])->name('showSeques');
     Route::get('/showAunction',[DataExecution::class,'showAunction'])->name('showAunction');
+
+    // EBM
+    // Route::get('/showSue/{id}', [DataLawsuit::class, 'showSue'])->name('showSue');
+    // Route::get('/showSue/{id}', [DataLawsuit::class, 'showSue'])->name('showSue');
+    // Route::get('/showSue/{id}', [DataLawsuit::class, 'showSue']);
+
+
+
 });

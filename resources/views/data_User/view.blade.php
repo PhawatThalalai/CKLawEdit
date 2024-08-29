@@ -45,7 +45,7 @@
                                 <a class="btn btn-primary btn-sm " href="{{ route('static.index') }}?type={{2}}&id={{$user->id}}"><i class="fa-solid fa-gears"></i></a>
                                 <button class="btn btn-danger btn-sm btn-removeUser" id="{{$user->id}}"><i class="fa-solid fa-user-lock"></i></button>
                             </td>
-    
+
                         </tr>
                         @php
                         $i = $i + 1
@@ -82,7 +82,7 @@
             @include('data-static.section-append.data-user')
           </div>
         </div>
-        
+
       </div>
     </div>
 </div>

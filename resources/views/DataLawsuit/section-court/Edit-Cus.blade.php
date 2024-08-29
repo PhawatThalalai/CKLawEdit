@@ -102,7 +102,7 @@
 
                     {{-- <div class="mb-3 input-bx">
                             <span>Choose file to upload</span>
-                            
+
                             <input type="file" name="file" placeholder="Choose File" id="file">
 
                         </div> --}}

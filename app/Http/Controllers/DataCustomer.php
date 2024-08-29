@@ -58,10 +58,10 @@ class DataCustomer extends Controller
     public function store(Request $request)
     {
 
-        // Store your user in database 
-       
+        // Store your user in database
+
         if (@$request->type == 'importSeachCus') {
-            
+
             if ($request->plaintiff == 'RSFHP') {
                 $data = DB::connection('ibmi2')
                     ->table('RSFHP.ARMAST')
@@ -221,11 +221,11 @@ class DataCustomer extends Controller
                 return response()->json(['message' => $e->getMessage(), 'code' => $e->getCode()], 500);
             }
         }elseif(@$request->type == 'CreateGuarantor'){
-            
+
             DB::beginTransaction();
 
             try {
-                
+
                     $Guarantor = new Guarantor;
                     $GuaAdd = new GuaAddress;
                     $Guarantor->name = @$request->data['name'];
@@ -252,7 +252,7 @@ class DataCustomer extends Controller
                     $GuaAdd->save();
 
                     // $Status->save();
-              
+
                 DB::commit();
 
                 $type = @$request->type;
@@ -285,7 +285,7 @@ class DataCustomer extends Controller
         if (@$request->type == 'SearchCus') {
             // ค้นหาตามเลขสัญญา
             if ($request->plaintiff == 'RSFHP') {
-                
+
                 $data = DB::connection('ibmi2')
                     ->table('RSFHP.ARMAST')
                     ->leftJoin('RSFHP.CUSTMAST', 'RSFHP.ARMAST.CUSCOD', '=', 'RSFHP.CUSTMAST.CUSCOD')
@@ -306,7 +306,7 @@ class DataCustomer extends Controller
                 $data_cusfollow = DB::connection('ibmi2')->select("SELECT * FROM PSFHP.VWLET_ARMGAR WHERE CONTNO = '${con_no}' ");
             }
 
-            
+
 
             // ค้นหาตามเลขบัตรประชาชน
             $data2 = DB::connection('ibmi2')
@@ -419,7 +419,7 @@ class DataCustomer extends Controller
 
     public function edit(Request $request, $id)
     {
-        // 
+        //
 
     }
 
@@ -481,7 +481,7 @@ class DataCustomer extends Controller
 
 
         if (@$request->type == 'updateGuarantor') {
-          
+
             DB::beginTransaction();
             try {
                 $Guarantor = Guarantor::where('id',  @$request->data['id'])->first();
@@ -512,7 +512,7 @@ class DataCustomer extends Controller
 
                 $type = @$request->type;
                 $data = Customer::where('id',@$request->data['cus_id'])->first();
-                
+
                 $dataStatus = Tribunal_status::get();
                 $dataGuarantor = Guarantor::where('cus_id', @$request->data['cus_id'])->get();
                 $customer = Guarantor::where('cus_id', @$request->data['cus_id'])->get();

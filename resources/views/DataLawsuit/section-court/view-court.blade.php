@@ -6,10 +6,14 @@
 
     {{-- header content --}}
     <div class="row mb-2 g-1">
-        <div class="col-3 d-flex justify-content-start">
-            <h5 class=" fw-semibold text-primary"><i class="fa-solid fa-address-book"></i> ฐานข้อมูลลูกหนี้ชั้นศาล
+        {{-- <div class="col-3 d-flex justify-content-start">
+            <h5 class=" fw-semibold text-primary"><i class="fa-solid fa-address-book">ฐานข้อมูลคดี</i>
             </h5>
-        </div>
+        </div> --}}
+        <div class="col-3">
+                <h5 class=" fw-semibold text-primary"><i class="fa-solid fa-address-book"></i> ฐานข้อมูลคดีลูกหนี้
+                </h5>
+            </div>
         <div class="col-7">
             <div class="container mb-2">
                 <form method="get" action="{{ route('Law.index') }}">
@@ -42,7 +46,7 @@
                 </form>
             </div>
         </div>
-        <div class="col-10">
+        {{-- <div class="col-10">
             <div class="text-sm-end">
                 <a class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2" data-bs-toggle="modal"
                     data-bs-target="#modal-md" data-link="{{ route('Law.create') }}?type={{ 'ExportExcelLaw' }}">
@@ -64,7 +68,30 @@
                     ข้อมูลคดีชั้นตั้งพนักงาน
                 </a>
             </div>
+        </div> --}}
+
+
+        {{-- <div class="col-10">
+            <div class="d-flex justify-content-center align-items-center">
+                <a class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2" data-bs-toggle="modal"
+                    data-bs-target="#modal-md" data-link="{{ route('Law.create') }}?type={{ 'ExportExcelLaw' }}">
+                    <i class="fa-solid fa-download"></i> Export/Import
+                </a>
+                <a class="btn btn-primary btn-rounded waves-effect waves-light mb-2" href="{{ route('showSue') }}">
+                    ข้อมูลชั้นฟ้อง
+                </a>
+            </div>
+        </div> --}}
+
+        <div class="col-2">
+            <div class="text-sm-end">
+                <a class="btn btn-success btn-rounded waves-effect waves-light mb-2 me-2" data-bs-toggle="modal"
+                    data-bs-target="#modal-md" data-link="{{ route('Exe.create') }}?type={{ 'ExportExcelExe' }}">
+                    <i class="fa-solid fa-download"></i> Export/Import
+                </a>
+            </div>
         </div>
+
         {{-- <div class="col-sm-3">
             <div class="text-sm-end">
                 <a data-link="{{ route('Cus.create') }}?type={{ 'Createcus' }}" data-bs-toggle="modal"
@@ -112,7 +139,11 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $key => $item)
-                                        <tr data-href="{{ route('Cus.show', $item->id) }}?type={{ 'showDetail' }}">
+                                    {{-- Type Test system --}}
+                                        {{-- <tr data-href="{{ route('Cus.show', $item->id) }}?type={{ 'showDetail' }}"> --}}
+
+                                            <tr data-href="{{ route('showSue', $item->id) }}?type={{ 'showDetail' }}">
+
                                             <td style="text-align: center;">
                                                 {{ @$item->date_tribunal ? \Carbon\Carbon::parse($item->date_tribunal)->year + 543 : '' }}
                                             </td>
@@ -173,6 +204,17 @@
     </script>
 
 </div>
+
+
+
+
+
+
+{{-- EBM --}}
+<!-- resources/views/DataLawsuit/section-court/view-court.blade.php -->
+
+
+
 
 
 @endsection
